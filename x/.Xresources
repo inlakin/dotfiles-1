@@ -1,0 +1,159 @@
+! URxvt*answerbackString:               string
+! URxvt*background.border:              boolean
+! URxvt*background.expr:                string
+! URxvt*background.interval:            seconds
+! URxvt*background:                     #0c1115
+! URxvt*backspacekey:                   string
+! URxvt*bell-command:                   string
+! URxvt*blurRadius:                     HxV
+URxvt*boldFont:                       xft:tewi:size=9:antialias=false
+! URxvt*boldItalicFont:                 fontname
+! URxvt*borderColor:                    color
+! URxvt*borderLess:                     boolean
+! URxvt*buffered:                       boolean
+! URxvt*chdir:                          string
+URxvt.clipboard.copycmd:              xsel -ib
+URxvt.clipboard.pastecmd:             xsel -ob
+! URxvt*colorBD:                        color
+! URxvt*colorIT:                        color
+! URxvt*colorRV:                        color
+! URxvt*colorUL:                        color
+URxvt*cursorBlink:                    true
+! URxvt*cursorColor2:                   color
+URxvt*cursorUnderline:                false
+! URxvt*cutchars:                       string
+! URxvt*deletekey:                      string
+URxvt*depth:                          32
+! URxvt*externalBorder:                 number
+! URxvt*fadeColor:                      color
+! URxvt*fading:                         number
+URxvt*font:                           xft:tewi:size=9:antialias=false
+! URxvt*geometry:                       geometry
+! URxvt*highlightColor:                 color
+! URxvt*highlightTextColor:             color
+! URxvt*hold:                           boolean
+! URxvt*iconFile:                       file
+! URxvt*iconName:                       string
+! URxvt*imFont:                         fontname
+! URxvt*imLocale:                       string
+! URxvt*inheritPixmap:                  boolean
+! URxvt*inputMethod:                    name
+! URxvt*insecure:                       boolean
+! URxvt*intensityStyles:                boolean
+! URxvt*internalBorder:                 number
+URxvt*iso14755:                       false
+URxvt*iso14755_52:                    false
+! URxvt*italicFont:                     fontname
+! URxvt*jumpScroll:                     boolean
+! URxvt*keysym.sym:                     keysym
+URxvt.keysym.Shift-Control-C:         perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:         perl:clipboard:paste
+URxvt.keysym.Shift-Down:              command:\033]721;1\007
+URxvt.keysym.Shift-Up:                command:\033]720;1\007
+! URxvt*kuake.hotkey:                   string
+! URxvt*letterSpace:                    number
+! URxvt*lineSpace:                      number
+! URxvt*loginShell:                     boolean
+! URxvt*mapAlert:                       boolean
+URxvt*matcher.button:                 1
+! URxvt*matcher.launcher.*:             string
+! URxvt*matcher.launcher:               string
+! URxvt*matcher.pattern.*:              string
+! URxvt*matcher.rend.*:                 string
+! URxvt*meta8:                          boolean
+! URxvt*modifier:                       modifier
+URxvt*mouseWheelScrollPage:           false
+! URxvt*multiClickTime:                 number
+! URxvt*override-redirect:              boolean
+! URxvt*pastableTabs:                   boolean
+! URxvt*perl-eval:                      perl-eval
+URxvt*perl-ext-common:                default,matcher,clipboard
+! URxvt*perl-ext:                       string
+! URxvt*perl-lib:                       string
+URxvt*pointerBlank:                   true
+! URxvt*pointerBlankDelay:              number
+! URxvt*pointerColor2:                  color
+! URxvt*pointerColor:                   color
+! URxvt*preeditType:                    style
+! URxvt*print-pipe:                     string
+! URxvt*remote-clipboard.fetch:         string
+! URxvt*remote-clipboard.store:         string
+! URxvt.resize-font.smaller:            C-Down
+! URxvt.resize-font.bigger:             C-Up
+! URxvt*reverseVideo:                   boolean
+URxvt*saveLines:                      5000
+URxvt*scrollBar:                      false
+! URxvt*scrollBar_align:                mode
+! URxvt*scrollBar_floating:             boolean
+URxvt*scrollBar_right:                false
+! URxvt*scrollColor:                    color
+! URxvt*scrollTtyKeypress:              boolean
+! URxvt*scrollTtyOutput:                boolean
+! URxvt*scrollWithBuffer:               boolean
+! URxvt*scrollstyle:                    mode
+! URxvt*searchable-scrollback:          string
+! URxvt*secondaryScreen:                boolean
+! URxvt*secondaryScroll:                boolean
+! URxvt*selection-autotransform.*:      string
+! URxvt*selection-pastebin.cmd:         string
+! URxvt*selection-pastebin.url:         string
+! URxvt*selection.pattern-0:            string
+! URxvt*shading:                        number
+! URxvt*skipBuiltinGlyphs:              boolean
+! URxvt*skipScroll:                     boolean
+! URxvt*tab-bg:                         colour
+! URxvt*tab-fg:                         colour
+! URxvt*tabbar-bg:                      colour
+! URxvt*tabbar-fg:                      colour
+! URxvt*termName:                       string
+! URxvt*thickness:                      number
+! URxvt*tintColor:                      color
+! URxvt*title:                          string
+! URxvt*transient-for:                  windowid
+! URxvt*transparent:                    boolean
+! URxvt*tripleclickwords:               boolean
+! URxvt*troughColor:                    color
+! URxvt*underlineColor:                 color
+! URxvt*urgentOnBell:                   boolean
+URxvt*url-launcher:                   /usr/bin/firefox
+! URxvt*utmpInhibit:                    boolean
+! URxvt*visual:                         number
+! URxvt*visualBell:                     boolean
+! URxvt*xrm:                            string
+
+! special
+*.foreground:   #c9c1ba
+*.background:   #0c1115
+*.cursorColor:  #c9c1ba
+
+! black
+*.color0:       #373b41
+*.color8:       #4e545c
+
+! red
+*.color1:       #91313b
+*.color9:       #7a232c
+
+! green
+*.color2:       #15814c
+*.color10:      #529e67
+
+! yellow
+*.color3:       #e9af40
+*.color11:      #e9c071
+
+! blue
+*.color4:       #708294
+*.color12:      #3c5165
+
+! magenta
+*.color5:       #917033
+*.color13:      #7a5b20
+
+! cyan
+*.color6:       #6880b5
+*.color14:      #84aaff
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
