@@ -1,0 +1,61 @@
+" vim: set ft=vimperator:
+source! ~/.vimperator/vimperatorcolors
+source! ~/.vimperator/vmptrffopt
+source! ~/.vimperator/noscript.js
+
+set defsearch=duckduckgo
+set hlsearch
+set ignorecase
+set incsearch
+set maxitems=10
+set newtab=all
+set smartcase
+set titlestring="Firefox"
+" set noloadplugins
+
+command! nsp noscript popup
+
+" don't focus the new opened tab automatically
+set activate=
+
+" don't focus any input elements automatically when open pages
+set focuscontent
+
+set gui=none,tabs,addons,bookmarks
+
+set complete=sbfl
+
+set showstatuslinks=1
+set status=ssl,input,location,bookmark,history,tabcount,position
+set editor="urxvt -e vim"
+set suggestengines=
+set animations=true
+
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+" ---------------------------------------------------------------------------- "
+"                                  keybindings                                 "
+" ---------------------------------------------------------------------------- "
+
+mapclear
+cmapclear
+imapclear
+
+inoremap <C-a> <C-Home><C-S-End>
+
+map <C-S-c> <C-c>
+imap <C-S-c> <C-c>
+
+noremap p <Nop>
+noremap <C-p> <Nop>
+
+noremap j 5j
+noremap k 5k
+
+nnoremap <C-n> :nsp <Return>
+
+nnoremap <S-J> :tabprevious<Return>
+nnoremap <S-K> :tabnext<Return>
+nnoremap <C-h> :tabprevious<Return>
+nnoremap <C-l> :tabnext<Return>
+nnoremap <C-t> :tabnew<Return>
