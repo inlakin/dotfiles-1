@@ -1,0 +1,36 @@
+#==============================================================================#
+#                          Zathura Configuration file                          #
+#==============================================================================#
+
+set font "tewi normal 9"
+# set font "ohsnap normal 9"
+# set font "terminus normal 9"
+
+map u zoom out
+map i zoom in
+map b adjust_window best-fit
+map <Space> navigate next
+map <Left> navigate previous
+map <Right> navigate next
+
+set inputbar-bg "#0c1115"
+set inputbar-fg "#c9c1ba"
+
+set highlight-color "#194018"
+
+set index-fg "#c9c1ba"
+set index-active-fg "#c9c1ba"
+set index-bg "#0c1115"
+set index-active-bg "#194018"
+
+set completion-bg "#0c1115"
+set completion-fg "#c9c1ba"
+set completion-highlight-fg "#c9c1ba"
+set completion-highlight-bg "#194018"
+
+set default-bg "#0c1115"
+set default-fg "#c9c1ba"
+
+set statusbar-bg "#0c1115"
+set statusbar-fg "#c9c1ba"
+set show-recent 0
