@@ -1,0 +1,22 @@
+mpd_music_dir = /media/hdd/Music
+
+active_column_color = "green"
+active_window_border = "yellow"
+colors_enabled = "yes"
+discard_colors_if_item_is_selected = "yes"
+empty_tag_color = "red"
+header_visibility = "no"
+main_window_color = "red"
+main_window_highlight_color = "blue"
+now_playing_prefix = "▶ "
+playlist_display_mode = "columns"
+progressbar_color = "blue"
+progressbar_look = "─╼ "
+song_columns_list_format = "(25)[green]{a} (40)[blue]{t|f} (30)[yellow]{b} (6f)[white]{l}"
+song_list_format = "$7$9$3%l$7$9 $7%a:$1$9 $2$R(%b)$9"
+statusbar_color = "green"
+titles_visibility = "no"
+user_interface = "alternative"
+window_border_color = "red"
+mouse_list_scroll_whole_page = no
+lines_scrolled = 5
