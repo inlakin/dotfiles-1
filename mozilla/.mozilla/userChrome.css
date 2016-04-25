@@ -1,0 +1,159 @@
+/* kill tab icons  */
+.tabbrowser-tabs .tab-icon-image { display: none !important; }
+
+/* kill close button on tabs and new tabs button  */
+.tab-close-button {
+   display: none !important;
+}
+.tabs-newtab-button {
+   display: none !important;
+   border: none !important;
+   margin: 0 !important;
+}
+
+/* resize bookmarks toolbar  */
+#PersonalToolbar {
+   height: 35px !important;
+   margin: -7px 0px !important;
+}
+
+/* kill icons for bookmarks */
+.bookmark-item > .menu-iconic-left {
+   display: none !important;
+}
+toolbarbutton.bookmark-item > .toolbarbutton-icon {
+   display: none;
+}
+
+/* Remove the drop down arrow in the Address bar */
+.autocomplete-history-dropmarker {
+   display: none !important;
+}
+
+/* auto tab width */
+.tabbrowser-tabs:not([drag=detach]) > .tabbrowser-tab:not([pinned])[fadein] {
+   min-width: 10px !important;
+   max-width: 100% !important;
+}
+
+/*Remove internal border*/
+#main-window:not([chromehidden*="toolbar"])[sizemode="normal"]
+{
+   margin-top:-1px!important;
+   margin-left:-1px!important;
+   margin-right:-1px!important;
+   margin-bottom:-1px !important;
+}
+
+/* Tabs layout  */
+#TabsToolbar .tabbrowser-tabs {
+   min-height: 18px !important;
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+   text-align: center !important;
+   margin-left: -15px !important;
+   margin-right: -15px !important;
+}
+
+/* Awesomebar improvements
+#urlbar {
+-moz-appearance: textfield !important;
+}
+ */
+
+/* Hide backbutton  */
+:root #back-button, #forward-button > .toolbarbutton-icon {
+   display: none !important;
+}
+window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
+   clip-path: none !important;
+   margin-left: 1px !important;
+}
+
+/* SQUARE TABS  */
+#TabsToolbar {
+   background: transparent !important;
+   margin-bottom: 0 !important;
+}
+#TabsToolbar .tabbrowser-tabs {
+   min-height: 26px !important;
+   margin-top: 1px !important;
+}
+#TabsToolbar .tabbrowser-tab {
+   -moz-border-top-colors: none !important;
+   -moz-border-left-colors: none !important;
+   -moz-border-right-colors: none !important;
+   -moz-border-bottom-colors: none !important;
+   border-width: 0px 0px 0 0.5px !important;
+   padding: 4px 0px !important;
+   background-clip: padding-box !important;
+   transition: all .1s !important;
+   margin-left: 0px !important;
+}
+#TabsToolbar .tabbrowser-tab[selected] {
+   background-clip: padding-box !important;
+}
+#TabsToolbar .tab-background {
+   margin: 0 !important;
+   background: transparent !important;
+}
+#TabsToolbar .tab-background-start,
+#TabsToolbar .tab-background-end {
+   display: none !important;
+}
+#TabsToolbar .tab-background-middle {
+   margin: -4px -2px !important;
+   background: transparent !important;
+}
+#TabsToolbar .tabbrowser-tab:after,
+#TabsToolbar .tabbrowser-tab:before {
+   display: none !important;
+}
+
+/* remove scrollbars */
+#content browser {
+   margin-right: -14px !important;
+   overflow-x: hidden;
+   overflow-y: scroll;
+}
+
+/* fix extensions icons on vimperator bar */
+#liberator-bottombar toolbarbutton {
+   min-height: 26px;
+   padding: 0;
+   margin: 0;
+}
+#liberator-status-ssl {
+  min-height: 9px !important;
+}
+
+/* -- COLORS -- */
+#PersonalToolbar > * {
+   background-color: #0C1115 !important;
+   border-color: #0C1115 !important;
+   border-width: 0px 0px 0 0px !important;
+   max-height: 8px !important;
+   color: #c9c1ba !important;
+}
+#urlbar > * {
+   background-color: #0C1115 !important;
+   border-width: 0px 0px 0 0px !important;
+   border-color: #0C1115 !important;
+}
+#nav-bar > * {
+   background-color: #0C1115 !important;
+   border-width: 0px 0px 0 0px !important;
+   border-color: #0C1115 !important;
+}
+#TabsToolbar .tabbrowser-tab:not([selected]) {
+   background: #0C1115 !important;
+   border-color: #363636 !important;
+   color: #616161 !important;
+   /* text-shadow: 0px 0px 10px white !important; */
+}
+#TabsToolbar .tabbrowser-tab[selected] {
+   background: #0C1115 !important;
+   border-color: #363636 !important;
+   border-width: 0px 0px 0 0.5px !important;
+   color: #c9c1ba !important;
+}
