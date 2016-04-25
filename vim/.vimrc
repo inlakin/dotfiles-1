@@ -264,6 +264,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap <S-K> 10k
+nnoremap <S-J> 10j
+
 " Tabs
 nnoremap <C-i> :tabprevious<CR>
 nnoremap <C-o> :tabnext<CR>
