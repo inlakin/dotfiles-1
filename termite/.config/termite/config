@@ -1,0 +1,64 @@
+#==============================================================================#
+#                          Termite configuration file                          #
+#==============================================================================#
+
+[options]
+resize_grip         = false
+scroll_on_output    = false
+scroll_on_keystroke = true
+audible_bell        = false
+visible_bell        = true
+mouse_autohide      = true
+allow_bold          = false
+dynamic_title       = false
+urgent_on_bell      = true
+clickable_url       = true
+scrollback_lines    = 5000
+search_wrap         = true
+cursor_blink        = system
+cursor_shape        = block
+browser             = firefox
+font = tewi 9
+# tewi 9 terminus 9 ohsnap 9
+#transparency        = 0.0
+
+[colors]
+
+# special
+foreground      = #c9c1ba
+foreground_bold = #c9c1ba
+cursor          = #c9c1ba
+background      = #0c1115
+# background         = rgba(12, 17, 21, 0.8)
+
+# black
+color0  = #373b41
+color8  = #4e545c
+
+# red
+color1  = #91313b
+color9  = #7a232c
+
+# green
+color2  = #15814c
+color10 = #529e67
+
+# yellow
+color3  = #e9af40
+color11 = #e9c071
+
+# blue
+color4  = #708294
+color12 = #3c5165
+
+# magenta
+color5  = #917033
+color13 = #7a5b20
+
+# cyan
+color6  = #6880b5
+color14 = #84aaff
+
+# white
+color7  = #707880
+color15 = #c5c8c6
