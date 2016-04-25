@@ -1,0 +1,210 @@
+#!/bin/bash
+
+source $(dirname $0)/config
+
+Clock()
+{
+    echo "C$ICON_CLOCK$(date +'%a%d/%m/%Y %T')"
+}
+
+Uname()
+{
+    echo "K$ICON_UNAME$(uname -r)"
+}
+
+Disk()
+{
+    disks=$(cat /proc/mounts | grep "^/dev/" | cut -d ' ' -f2)
+    total=0
+    used=0
+    for dev in $disks
+    do
+        tmpu=$(df -B M --output=used $dev | tail -n 1 | sed 's/M//g')
+        tmpt=$(df -B M --output=size $dev | tail -n 1 | sed 's/M//g')
+        total=$(bc <<< "$total+$tmpt")
+        used=$(bc <<< "$used+$tmpu")
+    done
+    total=$(numfmt --from-unit=1M --to=si "$total")
+    used=$(numfmt --from-unit=1M --to=si "$used")
+    echo "D$ICON_DISK$used/$total"
+}
+
+Cpu()
+{
+    cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}')
+    cpu=$(echo $cpu | cut -c1-4)
+    echo "P$ICON_CPU$cpu%"
+}
+
+Ram()
+{
+    ramtotal=$(free -mh | sed -n "2p" | awk -F " " '{print $2}')
+    ramused=$(free -mh | sed -n "2p" | awk -F " " '{print $3}')
+    echo "R$ICON_RAM$ramused/$ramtotal"
+}
+
+Mpd()
+{
+    STATE=$(mpc | sed -n 's/^.*\[\([^\[].*\)\] .*$/\1/p' | uniq)
+    CURRENT=$(mpc current | cut -c 1-70)
+    echo -n "S$ICON_MPD"
+    if [ -n $STATE ]; then
+        echo -n "$CURRENT $ICON_PREVIOUS"
+        if [[ $STATE = "playing" ]]; then
+            echo -n "$ICON_PAUSE"
+        else
+            echo -n "$ICON_PLAY"
+        fi
+        echo "$ICON_NEXT"
+    else
+        echo "$ICON_PLAY"
+    fi
+}
+
+Temp()
+{
+    temp=$((`sensors | grep "Physical id 0" | cut -d'+' -f2 | head -c2`))
+    echo "A$ICON_TEMP$temp°"
+}
+
+DFSINK()
+{
+    echo $(pacmd list-sinks | sed -n -e 's/.*\*\ index:\ \([0-9]\).*/\1/p')
+}
+
+Vol()
+{
+    MUTED=$(pacmd list-sinks|grep -A 15 '* index'|awk '/muted:/{ print $2 }')
+    VOL=$(pacmd list-sinks|grep -A 15 '* index'| awk '/volume: /{ print $5; exit}')
+    case $MUTED in
+        no)
+            echo "V$ICON_SOUND $VOL"
+            ;;
+        yes)
+            echo "V$ICON_MUTE"
+            ;;
+    esac
+}
+
+Bandw()
+{
+    INTERFACE=$(ip route | head -n 1 | cut -d' ' -f5)
+    if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "$(cat /sys/class/net/${INTERFACE}/operstate)" = "up" ]; then
+        echo "B%{F$COLOR_ICON}$ICON_CON%{F-}$INTERFACE: down"
+        return
+    fi
+    case $INTERFACE in
+        w*)
+            ICON_CON=$ICON_WIFI
+            ;;
+        *)
+            ICON_CON=$ICON_ETH
+            ;;
+    esac
+    path="/dev/shm/$(basename $0)-${INTERFACE}"
+    read rx < "/sys/class/net/${INTERFACE}/statistics/rx_bytes"
+    read tx < "/sys/class/net/${INTERFACE}/statistics/tx_bytes"
+    time=$(date +%s)
+    if ! [[ -f "${path}" ]]; then
+        echo "${time} ${rx} ${tx}" > "${path}"
+        chmod 0666 "${path}"
+    fi
+    read old < "${path}"
+    echo "${time} ${rx} ${tx}" > "${path}"
+    old=(${old//;/ })
+    time_diff=$(( $time - ${old[0]} ))
+    rx_diff=$(( $rx - ${old[1]} ))
+    tx_diff=$(( $tx - ${old[2]} ))
+    if [ $time_diff != 0 ]; then
+        rx_rate=$(( $rx_diff / $time_diff ))
+        tx_rate=$(( $tx_diff / $time_diff ))
+    else
+        rx_rate=0
+        tx_rate=0
+    fi
+    rx_kib=$(( $rx_rate >> 10 ))
+    if [[ "$rx_rate" -gt 1048576 ]]; then
+        in=$(echo "scale=1; $rx_kib / 1024" | bc)
+    else
+        in="${rx_kib}K"
+    fi
+    tx_kib=$(( $tx_rate >> 10 ))
+    if [[ "$tx_rate" -gt 1048576 ]]; then
+        out=$(echo "scale=1; $tx_kib / 1024" | bc)
+    else
+        out="${tx_kib}K"
+    fi
+    echo -n "B$ICON_CON$INTERFACE "
+    echo -n "$ICON_RX$in "
+    echo "$ICON_TX$out"
+}
+
+Battery() {
+    BAT=$(acpi -b | cut -d, -f2 | sed -e 's/\ //' -e 's/\%//')
+    STATUS=$(acpi -b | awk '{gsub(/,/,""); print $3}')
+    if [ "$ICONS" = yes ]; then
+        if [[ $STATUS != "Discharging" ]]; then
+            ICON_BAT="$(printf '\U00F0E7') "    # charging
+        elif [[ $BAT -lt 25 ]]; then
+            ICON_BAT="$(printf '\U00F243') "    # 1/4
+        elif [[ $BAT -lt 50 ]]; then
+            ICON_BAT="$(printf '\U00F242') "    # half
+        elif [[ $BAT -lt 75 ]]; then
+            ICON_BAT="$(printf '\U00F241') "    # 3/4
+        else
+            ICON_BAT="$(printf '\U00F240') "    # full
+        fi
+    fi
+    echo "Y$ICON_BAT$BAT% "
+}
+
+# ICON or TEXT
+if [ "$ICONS" = "yes" ]; then
+    ICON_CLOCK="%{F$C_WHITE}$(printf '\U00F017') %{F-}"
+    ICON_UNAME="%{F$C_WHITE}$(printf '\U00F17C') %{F-}"
+    ICON_DISK="%{F$C_WHITE}$(printf '\U00F0A0') %{F-}"
+    ICON_CPU="%{F$C_WHITE}$(printf '\U00F0E4') %{F-}"
+    ICON_RAM="%{F$C_WHITE}$(printf '\U00F0AE') %{F-}"
+    ICON_TEMP="%{F$C_WHITE}$(printf '\U00F06D') %{F-}"
+    ICON_RX="%{F$C_WHITE}$(printf '\U00F0D7') %{F-}"
+    ICON_TX="%{F$C_WHITE}$(printf '\U00F0D8') %{F-}"
+    ICON_ETH="%{F$C_WHITE}$(printf '\U00F0E8') %{F-}"
+    ICON_WIFI="%{F$C_WHITE}$(printf '\U00F1EB') %{F-}"
+    ICON_MPD="%{F$C_WHITE}$(printf '\U00F001') %{F-}"
+    ICON_PLAY="%{F$C_WHITE}$(printf '\U00F04B') %{F-}"
+    ICON_PAUSE="%{F$C_WHITE}$(printf '\U00F04C') %{F-}"
+    ICON_PREVIOUS="%{F$C_WHITE}$(printf '\U00F048') %{F-}"
+    ICON_NEXT="%{F$C_WHITE}$(printf '\U00F051')%{F-}"
+    ICON_STOP="%{F$C_WHITE}$(printf '\U00F04D')%{F-}"
+    ICON_MUTE="$(printf '\U00F026')"
+    ICON_SOUND="$(printf '\U00F028')"
+else
+    ICON_DISK="%{F$C_WHITE}DISK: %{F-}"
+    ICON_CPU="%{F$C_WHITE}CPU: %{F-}"
+    ICON_RAM="%{F$C_WHITE}RAM: %{F-}"
+    ICON_TEMP="%{F$C_WHITE}TEMP: %{F-}"
+    ICON_CON="%{F$C_WHITE}IF: %{F-}"
+    ICON_RX="%{F$C_WHITE}RX: %{F-}"
+    ICON_TX="%{F$C_WHITE}TX: %{F-}"
+    ICON_BAT="%{F$C_WHITE}BAT: %{F-}"
+fi
+
+# clickable icons
+if [ "$BAR_CLICKABLE" = "yes" ]; then
+    ICON_PLAY="%{A:mpc toggle:}$ICON_PLAY%{A}"
+    ICON_PAUSE="%{A:mpc toggle:}$ICON_PAUSE%{A}"
+    ICON_PREVIOUS="%{A:mpc prev:}$ICON_PREVIOUS%{A}"
+    ICON_NEXT="%{A:mpc next:}$ICON_NEXT%{A}"
+    ICON_STOP="%{A:mpc stop:}$ICON_STOP%{A}"
+    ICON_MUTE="%{A:pactl set-sink-mute $(DFSINK) toggle:}$ICON_MUTE%{A}"
+    ICON_SOUND="%{A:pactl set-sink-mute $(DFSINK) toggle:}$ICON_SOUND%{A}"
+    ICON_SOUND="%{A4:pactl set-sink-volume $(DFSINK) +5%:}$ICON_SOUND%{A}"
+    ICON_SOUND="%{A5:pactl set-sink-volume $(DFSINK) -5%:}$ICON_SOUND%{A}"
+    ICON_CLOCK="%{A:./notify Calendar:}$ICON_CLOCK%{A}"
+    ICON_UNAME="%{A:./notify Sysinfo:}$ICON_UNAME%{A}"
+fi
+
+while true; do
+    $1
+    sleep "$2"
+done

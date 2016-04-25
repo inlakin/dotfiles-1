@@ -1,0 +1,41 @@
+#==============================================================================#
+#                               BAR CONFIGURATION                              #
+#==============================================================================#
+
+ICONS=yes
+BAR_CLICKABLE=yes
+PANEL_FIFO="/tmp/panel-fifo"
+
+TEXTFONT="ohsnap-11"
+DFONT="ohsnap-9"
+ICONFONT="fontawesome-10"
+
+#==============================================================================#
+#                                    COLORS                                    #
+#==============================================================================#
+#
+C_BLACK=$(grep -e '^*.color0:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_RED=$(grep -e '^*.color1:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_GREEN=$(grep -e '^*.color2:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_YELLOW=$(grep -e '^*.color3:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_BLUE=$(grep -e '^*.color4:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_MAGENTA=$(grep -e '^*.color5:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_CYAN=$(grep -e '^*.color6:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+C_WHITE=$(grep -e '^*.color7:' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+
+COLOR_BACKGROUND=$(grep -e '^*.background' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+COLOR_FOREGROUND=$(grep -e '^*.foreground' ~/.Xresources | sed -e 's/.*://g' -e 's/\ *//g')
+
+COLOR_ACTIVE=$COLOR_FOREGROUND
+COLOR_OCCUPIED=$COLOR_FOREGROUND
+COLOR_BLANK=$C_WHITE
+COLOR_URGENT=$C_RED
+
+#==============================================================================#
+#                                   GEOMETRY                                   #
+#==============================================================================#
+
+PANEL_HEIGHT=25
+PANEL_GEOMETRY="${PANEL_WIDTH}x${PANEL_HEIGHT}+0+0"
+UNDERLINEHEIGHT=4
+WINDOW_GAP=0

@@ -1,0 +1,156 @@
+#==============================================================================#
+#                                 BSPWM HOTKEYS                                #
+#==============================================================================#
+
+# Quit bspwm
+super + alt + Escape
+    pkill -x panel; bspc quit
+
+# Close and kill
+super + {_,shift + }w
+    bspc node -{c,k}
+
+# Change monitor focus
+super + {p,n}
+    bspc monitor -f {prev,next}
+
+# set window state
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Balance tree
+super + b
+    bspc node -B
+
+# alternate between the tiled and monocle layout
+super + u
+    bspc desktop -l next
+
+# if the current node is automatic, send it to the last manual, otherwise pull the last leaf
+super + y
+    bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
+
+# swap the current node and the biggest node
+super + g
+    bspc node -s biggest
+
+# Change desktop
+super + ctrl + {h,l}
+    bspc {desktop -f} {prev,next}
+
+# Move window
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+# Resize window exterior
+super + alt + {h,j,k,l}
+    bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+# presel
+super + alt + shift + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# cancel presel for focused node
+super + alt + shift + space
+	bspc node -p cancel
+
+# Mirror and flip leaves of tree
+super + {comma,period}
+    bspc node -F {horizontal,vertical}
+
+# Change window gap
+super + {parenright,equal}
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+
+# focus or send to the given desktop
+super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,aacute}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Mouse control
+~button1
+    bspc pointer -g focus
+
+super + button{1-3}
+    ; bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1-3}
+    ; bspc pointer -t %i %i
+
+super + @button{1-3}
+    bspc pointer -u
+
+# Move floating windows alt + {h,l,k,j} xdo move {-x -20,-x +20,-y -20,-y +20} # Resize floating windows alt + shift + {h,l,k,j} xdo resize {-w -20,-w +20,-h -20,-h +20} && bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10} # switch tiling / floating windows
+super + Tab
+    bspc window focused -f next
+
+#==============================================================================#
+#                            wm independent hotkeys                            #
+#==============================================================================#
+
+#Applications
+
+super + Return
+    termite
+
+ctrl + alt + f
+    firejail --seccomp firefox
+
+ctrl + alt + e
+    thunar
+
+super + space
+    rofi -show run \
+        -bg '#373B41' \
+        -fg '#C9C1BA' \
+        -opacity '80' \
+        -lines '5' \
+        -width '30' \
+        -hide-scrollbar \
+        -font 'Tewi 8'
+
+# Music Key
+XF86AudioPlay
+    mpc toggle
+
+XF86AudioPrev
+    mpc prev
+
+XF86AudioNext
+    mpc next
+
+XF86AudioStop
+    mpc stop
+
+# Keyboard backleght
+XF86KbdBrightnessUp
+    asus-kbd-backlight up
+XF86KbdBrightnessDown
+    asus-kbd-backlight down
+
+# Music Media key (pulse)
+XF86AudioRaiseVolume
+    DF=$(pacmd list-sinks | sed -n -e 's/.*\*\ index:\ \([0-9]\).*/\1/p') && \
+    pactl set-sink-mute $DF false && \
+    pactl set-sink-volume $DF +5%
+
+XF86AudioLowerVolume
+    DF=$(pacmd list-sinks | sed -n -e 's/.*\*\ index:\ \([0-9]\).*/\1/p') && \
+    pactl set-sink-mute $DF false && \
+    pactl set-sink-volume $DF -5%
+
+XF86AudioMute
+    DF=$(pacmd list-sinks | sed -n -e 's/.*\*\ index:\ \([0-9]\).*/\1/p') && \
+    pactl set-sink-mute $DF toggle
+
+XF86TouchpadToggle
+    touchpadtoggle
+
+# Monitor Brightness
+XF86MonBrightnessUp
+    xbacklight -inc 10
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+# Rreload sxhkd configuration file
+super + Escape
+    pkill -USR1 -x sxhkd

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+source $(dirname $0)/config
+
+MOUSE_X=$(xdotool getmouselocation | sed -e 's/x\://g' -e 's/\ y.*//g')
+Y=$(($PANEL_HEIGHT + $WINDOW_GAP))
+TSLEEP=3
+
+Calendar()
+{
+    cal | sed -e "2s/\(.*\)/\^fg($C_YELLOW)\1\^fg()/" \
+        -e "s/\($(date +%B)\)/\^fg($C_GREEN)\1\^fg()/" \
+        -e "s/\(\ $(date +%d)\ \)/\^fg($C_GREEN)\1\^fg()/"
+}
+
+Sysinfo()
+{
+    inxi -Fx -c 0
+}
+
+case "$1" in
+    Calendar)
+        WIDTH=180
+        LINES=8
+        X=$(($MOUSE_X - $WIDTH / 2 ))
+        ALIGN="c"
+        ;;
+    Sysinfo)
+        WIDTH=750
+        LINES=34
+        X=$MOUSE_X
+        ALIGN="l"
+        TSLEEP=5
+        ;;
+esac
+
+pkill dzen
+( echo ;"$1"; sleep $TSLEEP; ) | dzen2 -fn "$DFONT" \
+    -x "$X" \
+    -y "$Y" \
+    -w "$WIDTH" \
+    -fg "$COLOR_FOREGROUND" \
+    -bg "$COLOR_BACKGROUND" \
+    -e 'onstart=uncollapse;button1=exit;' \
+    -sa $ALIGN \
+    -l $LINES >/dev/null 2>&1 &
+

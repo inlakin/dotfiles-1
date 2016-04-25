@@ -1,0 +1,84 @@
+#!/bin/bash
+
+source $(dirname $0)/config
+
+DSKTP=" $(printf '\U00F0C8') "
+DSKTP_EMPTY=" $(printf '\U00F096') "
+
+while read -r line ; do
+    case $line in
+        C*)
+            Clock="%{U$C_BLUE}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        P*)
+            Cpu="%{U$C_RED}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        R*)
+            Ram="%{U$C_MAGENTA}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        D*)
+            Disk="%{U$C_WHITE}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        K*)
+            Uname="%{U$C_YELLOW}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        A*)
+            Temp="%{U$C_YELLOW}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        B*)
+            Bandw="%{U$C_GREEN}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        Y*)
+            Bat="%{U$C_GREEN}%{+u}${line#?}%{-u}%{U-} "
+            ;;
+        V*)
+            Vol="%{U$C_BLUE}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        S*)
+            Mpd="%{U$C_GREEN}%{+u}${line#?}%{-u}%{U-}"
+            ;;
+        W*)
+            wm_infos="%{c}"
+            IFS=':'
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                pos=""
+                item=$1
+                name=${item#?}
+                case $item in
+                    m1|M1)
+                        pos="%{S0}"
+                        ;;
+                    m2|M2)
+                        pos="%{S1}"
+                        ;;
+                    m3|M3)
+                        pos="%{S2}"
+                        ;;
+                    [OFU]*)
+                        # active desktop
+                        wm_infos="$wm_infos%{F$COLOR_ACTIVE}$DSKTP%{U-}"
+                        ;;
+                    o*)
+                        # inactive but occupied desktop
+                        wm_infos="$wm_infos%{F$COLOR_BLANK}$DSKTP%{F-}"
+                        ;;
+                    f*)
+                        # inactive desktop
+                        wm_infos="$wm_infos%{F$COLOR_BLANK}$DSKTP_EMPTY%{F-}"
+                        ;;
+                    u*)
+                        # urgent desktop
+                        wm_infos="$wm_infos%{F$COLOR_URGENT}$DSKTP%{F-}"
+                        ;;
+                esac
+                shift
+                wm_infos="$wm_infos$pos"
+            done
+            ;;
+    esac
+
+    printf "%s\n" "%{S1}%{l} $Uname $Disk $Vol $Mpd $wm_infos\
+        %{S1}%{r}$Bandw $Ram $Cpu $Temp $Bat$Clock "
+
+done

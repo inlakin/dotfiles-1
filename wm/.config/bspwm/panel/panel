@@ -1,0 +1,46 @@
+#!/bin/bash
+
+cd $(dirname $0)
+source $(dirname $0)/config
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+    printf "%s\n" "The panel is already running." >&2
+    exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc config top_padding "$PANEL_HEIGHT"
+bspc subscribe report > "$PANEL_FIFO" &
+
+./bar Clock 1 > "$PANEL_FIFO" &
+./bar Cpu 1 > "$PANEL_FIFO" &
+./bar Ram 1 > "$PANEL_FIFO" &
+./bar Uname 60 > "$PANEL_FIFO" &
+./bar Disk 30 > "$PANEL_FIFO" &
+./bar Temp 10 > "$PANEL_FIFO" &
+./bar Vol 1 > "$PANEL_FIFO" &
+./bar Bandw 1 > "$PANEL_FIFO" &
+
+if [ "$(acpi -b 2>&1 | cut -d' ' -f1)" != "No" ]; then
+    ./bar Battery 10 > "$PANEL_FIFO" &
+fi
+
+if pgrep -cx mpd >/dev/null 2>&1 ; then
+    ./bar Mpd 1 > "$PANEL_FIFO" &
+fi
+
+cat "$PANEL_FIFO" \
+    | ./panel_bar \
+    | lemonbar \
+    -f "$TEXTFONT" \
+    -f "$ICONFONT" \
+    -F "$COLOR_FOREGROUND" \
+    -B "$COLOR_BACKGROUND" \
+    -g "$PANEL_GEOMETRY" \
+    -u "$UNDERLINEHEIGHT" \
+    | while read line; do eval "$line"; done &
+wait
