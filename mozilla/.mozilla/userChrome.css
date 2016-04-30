@@ -1,7 +1,4 @@
-/* kill tab icons  */
-.tabbrowser-tabs .tab-icon-image { display: none !important; }
-
-/* kill close button on tabs and new tabs button  */
+/* remove close button on tabs and new tabs button  */
 .tab-close-button {
    display: none !important;
 }
@@ -11,26 +8,13 @@
    margin: 0 !important;
 }
 
-/* resize bookmarks toolbar  */
+/* reduce bookmarks toolbar size  */
 #PersonalToolbar {
    height: 35px !important;
-   margin: -7px 0px !important;
+   margin: -5px 0px !important;
 }
 
-/* kill icons for bookmarks */
-.bookmark-item > .menu-iconic-left {
-   display: none !important;
-}
-toolbarbutton.bookmark-item > .toolbarbutton-icon {
-   display: none;
-}
-
-/* Remove the drop down arrow in the Address bar */
-.autocomplete-history-dropmarker {
-   display: none !important;
-}
-
-/* auto tab width */
+/* expand tab width */
 .tabbrowser-tabs:not([drag=detach]) > .tabbrowser-tab:not([pinned])[fadein] {
    min-width: 10px !important;
    max-width: 100% !important;
@@ -53,21 +37,6 @@ toolbarbutton.bookmark-item > .toolbarbutton-icon {
    text-align: center !important;
    margin-left: -15px !important;
    margin-right: -15px !important;
-}
-
-/* Awesomebar improvements
-#urlbar {
--moz-appearance: textfield !important;
-}
- */
-
-/* Hide backbutton  */
-:root #back-button, #forward-button > .toolbarbutton-icon {
-   display: none !important;
-}
-window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
-   clip-path: none !important;
-   margin-left: 1px !important;
 }
 
 /* SQUARE TABS  */
@@ -117,14 +86,23 @@ window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
    overflow-y: scroll;
 }
 
-/* fix extensions icons on vimperator bar */
-#liberator-bottombar toolbarbutton {
-   min-height: 26px;
-   padding: 0;
-   margin: 0;
+/* Hide backbutton  */
+:root #back-button, #forward-button > .toolbarbutton-icon {
+   display: none !important;
 }
-#liberator-status-ssl {
-  min-height: 9px !important;
+window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
+   clip-path: none !important;
+   margin-left: 30px !important;
+}
+
+/* Remove the drop down arrow in the Address bar */
+.autocomplete-history-dropmarker {
+   display: none !important;
+}
+
+/* Remove toolbar icon if folder */
+.bookmark-item[container="true"] > .toolbarbutton-icon {
+    display: none;
 }
 
 /* -- COLORS -- */
