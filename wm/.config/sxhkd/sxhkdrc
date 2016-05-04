@@ -123,9 +123,9 @@ XF86AudioStop
 
 # Keyboard backleght
 XF86KbdBrightnessUp
-    asus-kbd-backlight up
+    /usr/local/bin/kb-light.py +
 XF86KbdBrightnessDown
-    asus-kbd-backlight down
+    /usr/local/bin/kb-light.py -
 
 # Music Media key (pulse)
 XF86AudioRaiseVolume
@@ -151,6 +151,6 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
     xbacklight -dec 10
 
-# Rreload sxhkd configuration file
+# Reload sxhkd configuration file
 super + Escape
     pkill -USR1 -x sxhkd
