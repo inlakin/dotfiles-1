@@ -55,7 +55,7 @@ case $@ in
         ;;
     *)
         wmname LG3D
-        sxhkd -m 1 -f 60 >/tmp/sxhkd.log 2>&1 &
+        sxhkd -m 1 >/tmp/sxhkd.log 2>&1 &
         exec bspwm >/tmp/bspwm.log 2>&1
         ;;
 esac
