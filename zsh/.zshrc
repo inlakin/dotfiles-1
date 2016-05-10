@@ -23,8 +23,8 @@ setopt glob_dots
 #==============================================================================#
 
 HISTFILE=~/.zsh_history
-HISTSIZE=500
-SAVEHIST=500
+HISTSIZE=5000
+SAVEHIST=5000
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
