@@ -34,11 +34,8 @@ bspc config remove_disabled_monitors        true
 bspc config remove_unplugged_monitors       true
 
 # Rules
-bspc rule -a Gmrun state=floating
-bspc rule -a Thunar state=floating
 bspc rule -a Tilda state=floating focus=on locked=on manage=on border=off
-bspc rule -a Mpv state=floating
-bspc rule -a Conky ticky=on manage=off lower=on
+bspc rule -a mpv state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a Virt-viewer state=floating
 bspc rule -a Sxiv state=floating
