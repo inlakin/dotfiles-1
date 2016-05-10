@@ -196,6 +196,16 @@ mkcd() {
     mkdir -p "$dir" && cd "$dir";
 }
 
+bak() {
+    if [ -f "$1" ]; then
+        cp "$1" "${1}.backup"
+    elif [ -d "$1" ]; then
+        cp -r "$1" "${1}.backup"
+    else
+        echo "$1 not a file or a directory"
+    fi
+}
+
 f() {
     echo "find . -iname \"*$1*\""
     find . -iname "*$1*"
