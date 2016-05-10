@@ -95,8 +95,8 @@ super + Return
 ctrl + alt + f
     firejail --seccomp firefox
 
-ctrl + alt + e
-    thunar
+ctrl + alt + y
+    mpv --ytdl-format=best --ytdl "$(xsel -ob)"
 
 super + space
     rofi -show run \
