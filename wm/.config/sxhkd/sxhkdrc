@@ -100,8 +100,6 @@ ctrl + alt + y
 
 super + space
     rofi -show run \
-        -bg '#373B41' \
-        -fg '#C9C1BA' \
         -opacity '80' \
         -lines '5' \
         -width '30' \

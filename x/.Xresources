@@ -157,3 +157,10 @@ URxvt*url-launcher:                   /usr/bin/firefox
 ! white
 *.color7:       #707880
 *.color15:      #c5c8c6
+
+
+! rofi
+! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
+rofi.color-normal: #0c1115, #c9c1ba, #0c1115, #586e75, #eee8d5
+!                  'background', 'border'
+rofi.color-window: #0c1115, #c9c1ba
