@@ -7,7 +7,7 @@ export BROWSER=firefox
 export PAGER=less
 export KEYTIMEOUT=1
 
-umask 022
+umask 0077
 
 autoload -Uz compinit promptinit colors vcs_info
 compinit
