@@ -89,7 +89,7 @@ Vol()
 Bandw()
 {
     INTERFACE=$(ip route | head -n 1 | cut -d' ' -f5)
-    if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "$(cat /sys/class/net/${INTERFACE}/operstate)" = "up" ]; then
+    if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || [ "$(cat /sys/class/net/${INTERFACE}/operstate)" = "down" ]; then
         echo "B%{F$COLOR_ICON}$ICON_CON%{F-}$INTERFACE: down"
         return
     fi
