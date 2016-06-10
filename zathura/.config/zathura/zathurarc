@@ -16,7 +16,7 @@ map <Right> navigate next
 set inputbar-bg "#0c1115"
 set inputbar-fg "#c9c1ba"
 
-set highlight-color "#194018"
+set highlight-color "#00ff00"
 
 set index-fg "#c9c1ba"
 set index-active-fg "#c9c1ba"
