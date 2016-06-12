@@ -38,6 +38,7 @@ set smartcase
 set smartindent
 set smarttab
 set softtabstop=4
+set spelllang=en,fr
 set splitbelow
 set splitright
 set t_vb=
@@ -101,7 +102,7 @@ set viminfo^=%
 "autocmd BufNewFile,BufRead *.tex let g:indentLine_enabled=0
 
 autocmd FileType c,cpp,sh,zsh,make,python,vim setlocal tw=80
-autocmd FileType tex setlocal spell tw=100
+autocmd FileType tex setlocal spell tw=120
 autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 
