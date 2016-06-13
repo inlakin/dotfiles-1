@@ -65,7 +65,6 @@ Plugin 'jeanguyomarch/vim-metacomment'          " Comments surrounded by frame
 Plugin 'vim-airline/vim-airline'                " enhanced status line
 Plugin 'vim-airline/vim-airline-themes'         " airline themes
 Plugin 'tpope/vim-fugitive'                     " git support in vim
-Plugin 'jiangmiao/auto-pairs'                   " auto close ( } [ etc
 Plugin 'bronson/vim-trailing-whitespace'        " highlight and fix whitespaces
 Plugin 'scrooloose/nerdtree'                    " tree explorer
 Plugin 'majutsushi/tagbar'                      " display tags
