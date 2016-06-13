@@ -9,9 +9,12 @@ set font "tewi normal 9"
 map u zoom out
 map i zoom in
 map b adjust_window best-fit
+map v adjust_window width
 map <Space> navigate next
 map <Left> navigate previous
 map <Right> navigate next
+map p navigate previous
+map n navigate next
 
 set inputbar-bg "#0c1115"
 set inputbar-fg "#c9c1ba"
