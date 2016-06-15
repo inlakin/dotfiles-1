@@ -171,20 +171,21 @@ setopt pushdminus
 extract () {
     if [ -f $1 ] ; then
         case $1 in
-            *.tar.bz2)   tar xvjf $1   ;;
-            *.tar.gz)    tar xzvf $1   ;;
-            *.bz2)       bunzip2 $1   ;;
-            *.rar)       unrar x $1   ;;
-            *.gz)        gunzip $1    ;;
-            *.tar)       tar xvf $1    ;;
-            *.tbz2)      tar xjvf $1   ;;
-            *.tgz)       tar xzvf $1   ;;
-            *.zip)       unzip $1     ;;
-            *.Z)         uncompress $1;;
-            *.7z)        7z x $1      ;;
-            *.xz)        unxz $1      ;;
-            *)           echo "'$1' cannot be extracted via extract()"
-                ;;
+            *.7z)        7z x $1        ;;
+            *.Z)         uncompress $1  ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.deb)       ar vx $1       ;;
+            *.gz)        gunzip $1      ;;
+            *.rar)       unrar x $1     ;;
+            *.tar)       tar xvf $1     ;;
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xzvf $1    ;;
+            *.tar.xz)    tar xJvf $1    ;;
+            *.tbz2)      tar xjvf $1    ;;
+            *.tgz)       tar xzvf $1    ;;
+            *.xz)        unxz $1        ;;
+            *.zip)       unzip $1       ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
         esac
     else
         echo "'$1' is not a valid file"
@@ -194,16 +195,6 @@ extract () {
 mkcd() {
     dir="$*";
     mkdir -p "$dir" && cd "$dir";
-}
-
-bak() {
-    if [ -f "$1" ]; then
-        cp "$1" "${1}.backup"
-    elif [ -d "$1" ]; then
-        cp -r "$1" "${1}.backup"
-    else
-        echo "$1 not a file or a directory"
-    fi
 }
 
 f() {
@@ -218,11 +209,6 @@ cp_p() {
     fi  ;
 }
 
-mantopdf() {
-    stuff=$1
-    man -t $stuff | ps2pdf13 - "${stuff}.pdf"
-}
-
 mdread() {
     pandoc "$1" -f markdown -t html | w3m -T text/html
 }
@@ -231,22 +217,6 @@ pwdgen() {
     NBCHAR=16
     x=${1:-$NBCHAR}
     cat /dev/urandom | tr -dc 'a-zA-Z0-9[$-:-?{-~!^_`\[\]]' | fold -w $x | head -n 1
-}
-
-randman() {
-    check=1
-    while [ $check -eq 1 ];
-    do
-        man $(ls "/bin" |sed -n "$(echo $(($RANDOM % $(ls "/bin" |wc -l | awk "{ print $1; }" ) + 1 )) ) p")
-        if [ $? -eq 0 ] ; then
-            check=0
-        fi
-        echo $RANDOM > /dev/null
-    done
-}
-
-kernelgraph() {
-    lsmod | perl -e 'print "digraph \"lsmod\" {";<>;while(<>){@_=split/\s+/; print "\"$_[0]\" -> \"$_\"\n" for split/,/,$_[3]}print "}"' | dot -Tpng | display -;
 }
 
 lock() {
