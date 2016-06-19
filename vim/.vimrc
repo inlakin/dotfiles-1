@@ -102,6 +102,7 @@ set viminfo^=%
 
 autocmd FileType c,cpp,sh,zsh,make,python,vim setlocal tw=80
 autocmd FileType tex setlocal spell tw=120
+autocmd FileType html setlocal ts=2 sts=2 sw=2
 autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 
