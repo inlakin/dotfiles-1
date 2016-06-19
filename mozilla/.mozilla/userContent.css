@@ -1,8 +1,10 @@
 /*
- * fix font to terminus and fallback to icon-fonts if necessary (e.g. github...)
+ * force font to terminus and fallback to icon-fonts if necessary
  */
 * {
-   font-family: terminus, octicons, fontawesome, glyphicon, numerama, spip-icons, Deezer Icons, icomoon, alpine-icomoon !important;
+   font-family: terminus, octicons, fontawesome, glyphicon, numerama,
+   spip-icons, Deezer Icons, icomoon, alpine-icomoon,
+   Material-Design-Icons!important;
 }
 
 /* eliminate problems of dark GTK themes on input boxes,
