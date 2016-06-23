@@ -25,7 +25,7 @@ set editor="urxvt -e vim"
 set suggestengines=
 set animations=true
 
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set hintchars=&é\"\'(-è_çà)
 
 " ---------------------------------------------------------------------------- "
 "                                  keybindings                                 "
