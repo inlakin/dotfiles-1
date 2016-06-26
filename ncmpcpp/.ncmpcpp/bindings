@@ -431,8 +431,8 @@ def_key "p"
 #def_key "m"
 #  move_sort_order_up
 #
-#def_key "m"
-#  move_selected_items_up
+def_key "up"
+  move_selected_items_up
 #
 #def_key "m"
 #  toggle_media_library_sort_mode
@@ -443,8 +443,8 @@ def_key "p"
 #def_key "n"
 #  move_sort_order_down
 #
-#def_key "n"
-#  move_selected_items_down
+def_key "down"
+  move_selected_items_down
 #
 #def_key "M"
 #  move_selected_items_to
@@ -455,8 +455,8 @@ def_key "p"
 #def_key "S"
 #  save_playlist
 #
-#def_key "o"
-#  jump_to_playing_song
+def_key "m"
+  jump_to_playing_song
 #
 #def_key "G"
 #  jump_to_browser
