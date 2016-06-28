@@ -256,6 +256,7 @@ command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
 let mapleader = ","
 let g:mapleader = ","
 map <silent> <leader><cr> :noh<cr>
+imap <C-L> <Esc>
 
 " Fast saving
 nmap <leader>w :w!<cr>
