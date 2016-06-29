@@ -15,6 +15,7 @@ map <Left> navigate previous
 map <Right> navigate next
 map p navigate previous
 map n navigate next
+map t toggle_statusbar
 
 set inputbar-bg "#0c1115"
 set inputbar-fg "#c9c1ba"
