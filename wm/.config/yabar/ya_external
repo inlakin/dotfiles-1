@@ -1,0 +1,22 @@
+#!/bin/bash
+
+Uname()
+{
+    printf '\U00F17C  %s' "$(uname -r)"
+}
+
+Vol()
+{
+    MUTED=$(pacmd list-sinks|grep -A 15 '* index'|awk '/muted:/{ print $2 }')
+    VOL=$(pacmd list-sinks|grep -A 15 '* index'| awk '/volume: /{ print $5; exit}')
+    case $MUTED in
+        no)
+            printf '\U00F028  %s' "$VOL"
+            ;;
+        yes)
+            printf '\U00F026'
+            ;;
+    esac
+}
+
+"$1"

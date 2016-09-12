@@ -93,7 +93,7 @@ super + Return
     termite
 
 ctrl + alt + f
-    firejail --seccomp firefox
+    firejail --seccomp firefox --ProfileManager --no-remote
 
 ctrl + alt + y
     mpv --ytdl-format=best --ytdl "$(xsel -ob)"

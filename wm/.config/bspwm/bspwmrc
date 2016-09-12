@@ -2,8 +2,9 @@
 
 source $(dirname $0)/panel/config
 
-bspc config border_width        5
-bspc config window_gap          "$WINDOW_GAP"
+bspc config border_width    5
+bspc config window_gap      "$WINDOW_GAP"
+bspc config top_padding     "$PANEL_HEIGHT"
 
 MONS=( $(bspc query -M) )
 NBWS=$((10 / ${#MONS[*]}))
@@ -42,5 +43,3 @@ bspc rule -a Virt-viewer state=floating
 bspc rule -a Sxiv state=floating
 bspc rule -a Qemu-system-x86_64 state=floating
 
-killall panel
-~/.config/bspwm/panel/panel &

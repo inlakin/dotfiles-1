@@ -49,13 +49,7 @@ else
     hsetroot -solid "#373b41"
 fi
 
-case $@ in
-    *i3*)
-        exec i3 -V >> /tmp/i3log-$(date +'%F-%k-%M-%S') 2>&1
-        ;;
-    *)
-        wmname LG3D
-        sxhkd -m 1 >/tmp/sxhkd.log 2>&1 &
-        exec bspwm >/tmp/bspwm.log 2>&1
-        ;;
-esac
+wmname LG3D
+sxhkd -m 1 >/tmp/sxhkd.log 2>&1 &
+yabar -c ~/.config/yabar/yabar.conf &
+exec bspwm >/tmp/bspwm.log 2>&1
