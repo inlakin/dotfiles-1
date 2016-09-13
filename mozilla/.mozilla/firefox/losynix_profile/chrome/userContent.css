@@ -1,11 +1,13 @@
 /*
  * force font to terminus and fallback to icon-fonts if necessary
- */
+ *
+
 * {
    font-family: terminus, octicons, fontawesome, glyphicon, numerama,
    spip-icons, Deezer Icons, icomoon, alpine-icomoon, fontawesome-etherpad,
    Material-Design-Icons!important;
 }
+*/
 
 /* eliminate problems of dark GTK themes on input boxes,
  selection menus and buttons. */
