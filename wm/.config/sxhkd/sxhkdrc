@@ -36,7 +36,7 @@ super + g
 
 # Change desktop
 super + ctrl + {h,l}
-    bspc {desktop -f} {prev,next}
+    bspc {desktop -f} {prev.local,next.local}
 
 # Move window
 super + {_,shift + }{h,j,k,l}
@@ -152,3 +152,7 @@ XF86MonBrightnessDown
 # Reload sxhkd configuration file
 super + Escape
     pkill -USR1 -x sxhkd
+
+# Reload bspwm conf
+super + r
+    ~/.config/bspwm/bspwmrc
