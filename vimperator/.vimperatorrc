@@ -58,23 +58,23 @@ nnoremap <C-t> :tabnew<Return>
 "                                   ui tweak                                   "
 " ---------------------------------------------------------------------------- "
 
-hi StatusLine           color: #c9c1ba; background: #0c1115; font-family: terminus;
-hi Normal               color: #c9c1ba; background: #0c1115;  font-family: terminus;
+hi StatusLine           color: #c9c1ba; background: #0c1115; font-family: tewi;
+hi Normal               color: #c9c1ba; background: #0c1115;  font-family: tewi;
 hi CmdLine              color: #c9c1ba; background: #0c1115;
-hi CmdLine>*            font-family: terminus;
-hi PromptText           color: #c9c1ba; background: #0c1115; font-family: terminus;
-hi WarningMsg           color: #c9c1ba; background: #c2454e; font-family: terminus;
-hi ErrorMsg             color: #c9c1ba; background: #c2454e; font-family: terminus;
-hi CompDesc             color: #c9c1ba;  font-family: terminus;
-hi CompItem[selected]   color: #0c1115; background: #6880b5; font-family: terminus;
-hi Filter               color: #15814c; font-family: terminus;
-hi ModeMsg              color: #0c1115; color: #529e67; font-family: terminus;
-hi InfoMsg              color: #0c1115; font-family: terminus;
-hi Keyword              color: #c2454e; font-family: terminus;
-hi Tag                  color: #8a7a63; font-family: terminus;
-hi Enabled:             color: #15814c; font-family: terminus;
-hi Disabled:            color: #c2454e; font-family: terminus;
-hi URL                  color: #15814c; font-family: terminus;
+hi CmdLine>*            font-family: tewi;
+hi PromptText           color: #c9c1ba; background: #0c1115; font-family: tewi;
+hi WarningMsg           color: #c9c1ba; background: #c2454e; font-family: tewi;
+hi ErrorMsg             color: #c9c1ba; background: #c2454e; font-family: tewi;
+hi CompDesc             color: #c9c1ba;  font-family: tewi;
+hi CompItem[selected]   color: #0c1115; background: #6880b5; font-family: tewi;
+hi Filter               color: #15814c; font-family: tewi;
+hi ModeMsg              color: #0c1115; color: #529e67; font-family: tewi;
+hi InfoMsg              color: #0c1115; font-family: tewi;
+hi Keyword              color: #c2454e; font-family: tewi;
+hi Tag                  color: #8a7a63; font-family: tewi;
+hi Enabled:             color: #15814c; font-family: tewi;
+hi Disabled:            color: #c2454e; font-family: tewi;
+hi URL                  color: #15814c; font-family: tewi;
 hi Hint font-family: inherit; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #c9c1ba; background-color: #96262e; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
 hi Hint::after          content: attr(number);
 hi HintActive           color: #0c1115; background: #15814c;
