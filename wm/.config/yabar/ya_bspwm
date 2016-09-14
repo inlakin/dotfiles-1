@@ -1,0 +1,51 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    exit 1
+fi
+
+NBMON=$1
+
+FIFO="/tmp/bspwm_fifo_${NBMON}"
+[ -e "$FIFO" ] && rm "$FIFO"
+mkfifo "$FIFO"
+
+bspc subscribe report |
+sed -u -e "s/W.*\([mM]$NBMON.*\)\(\:[mM]$((NBMON+1)).*\|$\)/W\1/g" > "$FIFO" &
+
+while read -r line; do
+    wm=""
+    IFS=':'
+    set -- ${line#?}
+    while [ $# -gt 0 ]; do
+        item=$1
+        name=${item#?}
+        case $item in
+            [m]*)
+                color="#FFFFFF"
+                ;;
+            [M]*)
+                color="#15814c"
+                ;;
+            [OFU]*)
+                # active desktop
+                wm="${wm} <span color=\"$color\">$(printf '\U00F111')</span> "
+                ;;
+            o*)
+                # inactive but occupied desktop
+                wm="${wm} $(printf '\U00F111') "
+                ;;
+            f*)
+                # inactive desktop
+                wm="${wm} $(printf '\U00F10C') "
+                ;;
+            u*)
+                # urgent desktop
+                wm="${wm} $(printf '\U00F111') "
+                ;;
+        esac
+        shift
+    done
+    echo "${wm}"
+done < "$FIFO"
+

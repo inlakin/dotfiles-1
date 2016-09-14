@@ -1,10 +1,8 @@
 #!/bin/bash
 
-source $(dirname $0)/panel/config
-
 bspc config border_width    3
-bspc config window_gap      "$WINDOW_GAP"
-bspc config top_padding     "$PANEL_HEIGHT"
+bspc config window_gap      0
+bspc config top_padding     25
 
 MONS=( $(bspc query -M) )
 NBWS=$((10 / ${#MONS[*]}))
@@ -31,7 +29,7 @@ bspc config remove_unplugged_monitors   true
 # colors
 bspc config normal_border_color 	        "#373b41"
 bspc config active_border_color 	        "#707070"
-bspc config focused_border_color 	        "#15814c"
+bspc config focused_border_color 	        "#c5c8c6"
 bspc config presel_feedback_color 	        "#707880"
 
 
@@ -44,3 +42,10 @@ bspc rule -a Virt-viewer state=floating
 bspc rule -a Sxiv state=floating
 bspc rule -a Qemu-system-x86_64 state=floating
 
+# Bar
+pkill yabar
+if hostname | grep -q laptop ; then
+    yabar -c ~/.config/yabar/yabar_laptop.conf &
+else
+    yabar -c ~/.config/yabar/yabar.conf &
+fi
