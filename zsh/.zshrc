@@ -7,7 +7,7 @@ export BROWSER=firefox
 export PAGER=less
 export KEYTIMEOUT=1
 
-umask 0077
+umask 077
 
 autoload -Uz compinit promptinit colors vcs_info
 compinit
@@ -256,6 +256,10 @@ fi
 #==============================================================================#
 #                                 other options                                #
 #==============================================================================#
+
+if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
+    source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
 
 # host specific configuration
 if [ -f ~/.zshrc_spec ]; then
