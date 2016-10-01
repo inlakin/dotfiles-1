@@ -1,0 +1,82 @@
+[alias]
+
+    a = add
+    b = branch
+    ba = branch -a
+    br = branch -r
+    c = commit
+    ca = commit --amend
+    cm = commit -m
+    cs = commit -S
+    ck = checkout
+    cp = cherry-pick
+    d = diff
+    dc = diff --cached
+    dt = difftool
+    f = fetch
+    fo = fetch origin
+    fu = fetch upstream
+    lo = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %G? %an, %ar%Creset'
+    lor = log --reverse --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %G? %an, %ar%Creset' @{upstream}..HEAD
+    los = log --stat --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %G? %an, %ar%Creset'
+    m = merge
+    np = !git --no-pager
+    pl = pull
+    ps = push
+    pso = push origin
+    psom = push origin master
+    r = reset
+    rh = reset HEAD
+    rv = remote -v
+    st = status -sb
+
+[apply]
+    whitespace = fix
+
+[color]
+    ui = auto
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+[commit]
+    verbose = true
+    gpgsign = true
+
+[core]
+    autocrlf = input
+    compression = 9
+    editor = vim
+    whitespace = trailing-space,space-before-tab
+
+[diff]
+    tool = vimdiff
+    compactionHeuristic = true
+
+[difftool]
+    prompt = false
+
+[fetch]
+    fsckobjects = true
+
+[log]
+    decorate = full
+
+[pull]
+    rebase = true
+
+[push]
+    default = simple
+
+[receive]
+    fsckobjects = true
+
+[transfer]
+    fsckobjects = true
+
+[user]
+    email = losynix@openmailbox.org
+    name = losynix
+    signingKey = 0B057359
