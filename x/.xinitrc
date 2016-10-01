@@ -26,7 +26,7 @@ if hostname | grep -q laptop ; then
     syndaemon -i1 -k d &
     xset s off
     setterm -powersave off -blank 0 -powerdown 0
-    xrandr --output eDP1 --primary
+    xrandr --output eDP-1 --primary
     # xmodmap -e 'clear Lock' &
     # unclutter -grab -noevents -root &
     yabar -c ~/.config/yabar/yabar_laptop.conf &
