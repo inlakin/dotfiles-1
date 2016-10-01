@@ -119,35 +119,35 @@ bindkey '^R' history-incremental-search-backward
 #==============================================================================#
 
 alias cd=' cd'
-alias cx='chmod +x'
+alias cdusb='cd /mnt/usb'
 alias cmx='chmod -x'
 alias cp='cp -iv'
-alias cdusb='cd /mnt/usb'
+alias cx='chmod +x'
 alias fancydate='watch -n1 "date '+%D%n%T'|figlet -k"'
+alias g='git'
+alias gitkli="git log --graph --abbrev-commit --pretty=oneline --decorate"
 alias grep='grep --color=auto'
 alias grepi='grep -i'
 alias grin='grep -rin'
-alias gst='git status'
-alias gitkli="git log --graph --abbrev-commit --pretty=oneline --decorate"
+alias iftop='iftop -N -p -P'
 alias la='ls -lAh'
 alias ll='ls -lh'
-alias ls='ls --color=auto'
 alias ln='ln -v'
+alias ls='ls --color=auto'
 alias mkdir='mkdir -p -v'
 alias mpdpc='mpd ~/.config/mpd/mpd.conf'
 alias mv='mv -iv'
-alias iftop='iftop -N -p -P'
 alias psc='ps xawf -eo pid,user,cgroup,args'
-alias psns='ps xawf -eo pid,user,pidns,userns,utsns,netns,mntns,args'
 alias psm='ps -eo pmem,pcpu,vsize,pid,cmd | sort -k 1 -nr | head -10'
+alias psns='ps xawf -eo pid,user,pidns,userns,utsns,netns,mntns,args'
 alias rm='rm -Iv --one-file-system'
 alias rmdir='rmdir -v'
 alias savepkglist='pacman -Qqe | grep -vx "$(pacman -Qqm)" > ~/vrac/pkg.list'
 alias sz="source ~/.zshrc"
 alias tlog='multitail /var/log/everything.log'
 alias vi='vim'
-alias ympv="mpv --ytdl-format=best --ytdl "
 alias weather="curl -s http://wttr.in | head -n -2"
+alias ympv="mpv --ytdl-format=best --ytdl "
 
 #==============================================================================#
 #                                   dirstack                                   #
