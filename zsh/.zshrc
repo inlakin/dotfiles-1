@@ -147,6 +147,7 @@ alias sz="source ~/.zshrc"
 alias tlog='multitail /var/log/everything.log'
 alias vi='vim'
 alias ympv="mpv --ytdl-format=best --ytdl "
+alias weather="curl -s http://wttr.in | head -n -2"
 
 #==============================================================================#
 #                                   dirstack                                   #
