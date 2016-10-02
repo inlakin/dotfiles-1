@@ -96,7 +96,7 @@ ctrl + alt + f
     firejail --seccomp firefox --ProfileManager --no-remote
 
 ctrl + alt + y
-    mpv --ytdl-format=best --ytdl "$(xsel -ob)"
+    mpv --really-quiet --ytdl-format=best --ytdl "$(xsel -ob)"
 
 super + space
     rofi -show run \
