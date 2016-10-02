@@ -6,48 +6,72 @@ export EDITOR=vim
 export BROWSER=firefox
 export PAGER=less
 export KEYTIMEOUT=1
+export TERM=xterm
+export GPG_TTY=$(tty)
 
-umask 077
+umask 022
 
-autoload -Uz compinit promptinit colors vcs_info
-compinit
-promptinit
-colors
-setopt completealiases
-setopt promptsubst
-setopt auto_remove_slash
-setopt glob_dots
+setopt \
+    appendhistory       \
+    autocd              \
+    autolist            \
+    autopushd           \
+    autoremoveslash     \
+    cdablevars          \
+    completealiases     \
+    correct             \
+    extendedhistory     \
+    globdots            \
+    histignoredups      \
+    histignorespace     \
+    histverify          \
+    incappendhistory    \
+    longlistjobs        \
+    notify              \
+    numericglobsort     \
+    promptsubst         \
+    pushdignoredups     \
+    pushdminus          \
+    pushdsilent         \
+    pushdtohome         \
+    recexact            \
+    sharehistory
 
-#==============================================================================#
-#                                    history                                   #
-#==============================================================================#
+unsetopt \
+    autoparamslash  \
+    bgnice
 
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_VERIFY
-setopt SHARE_HISTORY
-setopt EXTENDED_HISTORY
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
+DIRSTACKSIZE=20
+
+typeset -U path cdpath fpath manpath
+
+autoload -Uz compinit && compinit
+autoload -Uz promptinit && promptinit
+autoload -Uz colors && colors
+autoload -Uz vcs_info
 
 #==============================================================================#
-#                                autocompletion                                #
+#                                  completion                                  #
 #==============================================================================#
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*' completer _expand _complete _match
+zstyle ':completion:*::::' completer  _expand _complete _match _extensions \
+    _ignored
 zstyle ':completion:*' completions 0
 zstyle ':completion:*' glob 0
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' matcher-list '+m:{a-z}={A-Z} r:|[._-]=** r:|=**' '' '' '+m:{a-z}={A-Z} r:|[._-]=** r:|=**'
+zstyle ':completion:*' matcher-list \
+   '+m:{a-z}={A-Z} r:|[._-]=** r:|=**' '' '' '+m:{a-z}={A-Z} r:|[._-]=** r:|=**'
 zstyle ':completion:*' max-errors 1 numeric
 zstyle ':completion:*' substitute 0
 zstyle ':completion:*' rehash true
 zstyle ':compinstall' filename "$HOME/.zshrc"
+
+zstyle ':completion:*:expand:*' tag-order all-expansions
 
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found' '(*/)#CVS'
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
@@ -57,8 +81,10 @@ zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
-zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.pro' '*~'
-zstyle ':completion:*:(^rm):*' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.pro' '*~'
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns \
+    '*?.o' '*?.c~' '*?.old' '*?.pro' '*~'
+zstyle ':completion:*:(^rm):*' ignored-patterns \
+    '*?.o' '*?.c~' '*?.old' '*?.pro' '*~'
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
 
 #==============================================================================#
@@ -72,7 +98,8 @@ fi
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*:*' get-revision true
 zstyle ':vcs_info:git*:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "$fg_bold[green]%b%m$reset_color/$fg[yellow]%12.12i %c%u$reset_color"
+zstyle ':vcs_info:git*' formats \
+    "$fg_bold[green]%b%m$reset_color/$fg[yellow]%12.12i %c%u$reset_color"
 precmd() {
     vcs_info
 }
@@ -84,6 +111,10 @@ fi
 PROMPT='${prmptssh}%(!.%{$fg[red]%}.%{$fg[blue]%})%n%{$fg[white]%}@%{$fg[blue]%}%M%{$reset_color%} %{$fg_bold[magenta]%}%~%{$reset_color%} ${vcs_info_msg_0_}
 %{$fg[yellow]%}%L%{$reset_color%} %{$fg[green]%}%T%{$reset_color%}%(?..%{$fg[red]%} %?%{$reset_color%}) %{$fg[white]%}▶%{$reset_color%} '
 
+#==============================================================================#
+#                                  keybindings                                 #
+#==============================================================================#
+
 # vi mode
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -92,9 +123,6 @@ VIM_PROMPT="%{$fg[white]%} [% NORMAL]% %{$reset_color%}"
 RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
 zle reset-prompt
 }
-#==============================================================================#
-#                                  keybindings                                 #
-#==============================================================================#
 
 bindkey -v
 autoload zkbd
@@ -125,7 +153,7 @@ alias cp='cp -iv'
 alias cx='chmod +x'
 alias fancydate='watch -n1 "date '+%D%n%T'|figlet -k"'
 alias g='git'
-alias gitkli="git log --graph --abbrev-commit --pretty=oneline --decorate"
+alias gi='git'
 alias grep='grep --color=auto'
 alias grepi='grep -i'
 alias grin='grep -rin'
@@ -134,6 +162,7 @@ alias la='ls -lAh'
 alias ll='ls -lh'
 alias ln='ln -v'
 alias ls='ls --color=auto'
+alias lsd='ls -ld *(-/DN)'
 alias mkdir='mkdir -p -v'
 alias mpdpc='mpd ~/.config/mpd/mpd.conf'
 alias mv='mv -iv'
@@ -144,8 +173,9 @@ alias rm='rm -Iv --one-file-system'
 alias rmdir='rmdir -v'
 alias savepkglist='pacman -Qqe | grep -vx "$(pacman -Qqm)" > ~/vrac/pkg.list'
 alias sz="source ~/.zshrc"
-alias tlog='multitail /var/log/everything.log'
-alias vi='vim'
+alias v='vim -p'
+alias vi='vim -p'
+alias vim='vim -p'
 alias weather="curl -s http://wttr.in | head -n -2"
 alias ympv="mpv --ytdl-format=best --ytdl "
 
@@ -160,10 +190,6 @@ fi
 chpwd() {
     print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
-DIRSTACKSIZE=20
-setopt autopushd pushdsilent pushdtohome
-setopt pushdignoredups
-setopt pushdminus
 
 #==============================================================================#
 #                                   functions                                  #
@@ -212,10 +238,8 @@ mdread() {
     pandoc "$1" -f markdown -t html | w3m -T text/html
 }
 
-pwdgen() {
-    NBCHAR=16
-    x=${1:-$NBCHAR}
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9[$-:-?{-~!^_`\[\]]' | fold -w $x | head -n 1
+function = {
+  echo "$@" | bc -l
 }
 
 lock() {
@@ -248,9 +272,10 @@ export LESS_TERMCAP_md=$(printf '\e[1;34m')
 export LESS_TERMCAP_us=$(printf '\e[1;32m')
 export LESS_TERMCAP_so=$(printf '\e[1;44;1m')
 
-if [ -f ~/.dircolors ]; then
-    eval $(dircolors ~/.dircolors)
+if [ ! -f ~/.dircolors ]; then
+    dircolors -p > ~/.dircolors
 fi
+eval $(dircolors ~/.dircolors)
 
 #==============================================================================#
 #                                 other options                                #
@@ -264,4 +289,3 @@ fi
 if [ -f ~/.zshrc_spec ]; then
     source ~/.zshrc_spec
 fi
-
