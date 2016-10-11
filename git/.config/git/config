@@ -1,5 +1,4 @@
 [alias]
-
     a = add
     b = branch
     ba = branch -a

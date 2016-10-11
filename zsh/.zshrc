@@ -58,8 +58,7 @@ autoload -Uz vcs_info
 #==============================================================================#
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*::::' completer  _expand _complete _match _extensions \
-    _ignored
+zstyle ':completion:*::::' completer  _expand _complete _match _ignored
 zstyle ':completion:*' completions 0
 zstyle ':completion:*' glob 0
 zstyle ':completion:*' group-name ''
@@ -263,7 +262,7 @@ if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
     ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=white'
 fi
 
-export LESS=-R
+export LESS=-FIRX
 export LESS_TERMCAP_me=$(printf '\e[0m')
 export LESS_TERMCAP_se=$(printf '\e[0m')
 export LESS_TERMCAP_ue=$(printf '\e[0m')
