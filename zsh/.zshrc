@@ -157,6 +157,7 @@ alias grep='grep --color=auto'
 alias grepi='grep -i'
 alias grin='grep -rin'
 alias iftop='iftop -N -p -P'
+alias al='ls -lAh'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ln='ln -v'
@@ -165,12 +166,13 @@ alias lsd='ls -ld *(-/DN)'
 alias mkdir='mkdir -p -v'
 alias mpdpc='mpd ~/.config/mpd/mpd.conf'
 alias mv='mv -iv'
+alias oports='sudo netstat -tulanp'
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias psm='ps -eo pmem,pcpu,vsize,pid,cmd | sort -k 1 -nr | head -10'
 alias psns='ps xawf -eo pid,user,pidns,userns,utsns,netns,mntns,args'
 alias rm='rm -Iv --one-file-system'
 alias rmdir='rmdir -v'
-alias savepkglist='pacman -Qqe | grep -vx "$(pacman -Qqm)" > ~/vrac/pkg.list'
+alias savepkglist='pacman -Qqe | grep -vx "$(pacman -Qqm)" > ~.pkg.list'
 alias sz="source ~/.zshrc"
 alias v='vim -p'
 alias vi='vim -p'
@@ -194,7 +196,7 @@ chpwd() {
 #                                   functions                                  #
 #==============================================================================#
 
-extract () {
+ext () {
     if [ -f $1 ] ; then
         case $1 in
             *.7z)                   7z x $1 ;;
@@ -248,6 +250,18 @@ lock() {
     i3lock -f -e -i "$BG"
     rm "$BG"
 }
+
+quiet() {
+    nohup $@ &>/dev/null &
+}
+
+# quick bin/hex/dec converter
+dtb() { echo "obase=2; ${1}" | bc };
+dth() { echo "obase=16; ${1}" | bc };
+btd() { echo "ibase=2; ${1}" | bc };
+htd() { echo "ibase=16; ${1}" | bc };
+bth() { echo "obase=16;ibase=2; ${1}" | bc };
+htb() { echo "ibase=16;obase=2; ${1}" | bc };
 
 #==============================================================================#
 #                                    colors                                    #
