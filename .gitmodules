@@ -1,0 +1,51 @@
+[submodule "vim/.vim/pack/plugins/start/vim-bracketed-paste"]
+	path = vim/.vim/pack/plugins/start/vim-bracketed-paste
+	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
+[submodule "vim/.vim/pack/plugins/start/vim-trailing-whitespace"]
+	path = vim/.vim/pack/plugins/start/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace.git
+[submodule "vim/.vim/pack/plugins/start/vim-system-copy"]
+	path = vim/.vim/pack/plugins/start/vim-system-copy
+	url = https://github.com/christoomey/vim-system-copy.git
+[submodule "vim/.vim/pack/plugins/start/vim-python-pep8-indent"]
+	path = vim/.vim/pack/plugins/start/vim-python-pep8-indent
+	url = https://github.com/hynek/vim-python-pep8-indent.git
+[submodule "vim/.vim/pack/plugins/start/vim-metacomment"]
+	path = vim/.vim/pack/plugins/start/vim-metacomment
+	url = https://github.com/jeanguyomarch/vim-metacomment.git
+[submodule "vim/.vim/pack/plugins/start/vim-easy-align"]
+	path = vim/.vim/pack/plugins/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "vim/.vim/pack/plugins/start/tagbar"]
+	path = vim/.vim/pack/plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/.vim/pack/plugins/start/vim-startify"]
+	path = vim/.vim/pack/plugins/start/vim-startify
+	url = https://github.com/mhinz/vim-startify.git
+[submodule "vim/.vim/pack/plugins/start/nerdtree"]
+	path = vim/.vim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/pack/plugins/start/syntastic"]
+	path = vim/.vim/pack/plugins/start/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/.vim/pack/plugins/start/vim-commentary"]
+	path = vim/.vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/.vim/pack/plugins/start/vim-fugitive"]
+	path = vim/.vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/pack/plugins/start/vim-surround"]
+	path = vim/.vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/pack/plugins/start/vim-airline"]
+	path = vim/.vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/.vim/pack/plugins/start/vim-airline-themes"]
+	path = vim/.vim/pack/plugins/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/.vim/pack/plugins/start/a.vim"]
+	path = vim/.vim/pack/plugins/start/a.vim
+	url = https://github.com/vim-scripts/a.vim.git
+[submodule "vim/.vim/pack/plugins/start/L9"]
+	path = vim/.vim/pack/plugins/start/L9
+	url = https://github.com/vim-scripts/L9.git

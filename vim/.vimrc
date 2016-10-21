@@ -50,35 +50,6 @@ set wildmode=list:full
 set wrap
 
 " ---------------------------------------------------------------------------- "
-"                                    Vundle                                    "
-" ---------------------------------------------------------------------------- "
-
-filetype off
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'                   " Plugin manager
-Plugin 'L9'                                     " Library of scripts
-Plugin 'vim-scripts/a.vim'                      " Alternate source/header files
-Plugin 'jeanguyomarch/vim-metacomment'          " Comments surrounded by frame
-Plugin 'vim-airline/vim-airline'                " enhanced status line
-Plugin 'vim-airline/vim-airline-themes'         " airline themes
-Plugin 'tpope/vim-fugitive'                     " git support in vim
-Plugin 'bronson/vim-trailing-whitespace'        " highlight and fix whitespaces
-Plugin 'scrooloose/nerdtree'                    " tree explorer
-Plugin 'majutsushi/tagbar'                      " display tags
-Plugin 'junegunn/vim-easy-align'                " align key/value text
-Plugin 'tpope/vim-surround'                     " add surround object
-Plugin 'tpope/vim-commentary'                   " easy comment stuff
-Plugin 'christoomey/vim-system-copy'            " system copy support
-Plugin 'ConradIrwin/vim-bracketed-paste'        " handles bracketed-paste-mode
-Plugin 'mhinz/vim-startify'                     " start screen / session manager
-Plugin 'scrooloose/syntastic'                   " syntax checker
-Plugin 'hynek/vim-python-pep8-indent'           " python indentation
-call vundle#end()
-
-" ---------------------------------------------------------------------------- "
 "                                    More Options                              "
 " ---------------------------------------------------------------------------- "
 
