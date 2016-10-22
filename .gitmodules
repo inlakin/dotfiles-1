@@ -49,3 +49,6 @@
 [submodule "vim/.vim/pack/plugins/start/L9"]
 	path = vim/.vim/pack/plugins/start/L9
 	url = https://github.com/vim-scripts/L9.git
+[submodule "vim/.vim/pack/plugins/start/vim-devicons"]
+	path = vim/.vim/pack/plugins/start/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git

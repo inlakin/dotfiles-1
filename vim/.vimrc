@@ -78,6 +78,8 @@ autocmd FileType gitcommit setlocal spell tw=72
 autocmd FileType markdown setlocal spell tw=80
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 
+let NERDTreeShowHidden=1
+
 " ---------------------------------------------------------------------------- "
 "                            Python specific (PEP8)                            "
 " ---------------------------------------------------------------------------- "
