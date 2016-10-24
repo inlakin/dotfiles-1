@@ -34,7 +34,6 @@ setopt \
     pushdminus          \
     pushdsilent         \
     pushdtohome         \
-    recexact            \
     sharehistory
 
 unsetopt \
