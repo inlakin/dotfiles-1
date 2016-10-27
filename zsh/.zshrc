@@ -144,6 +144,7 @@ bindkey '^R' history-incremental-search-backward
 #                                    aliases                                   #
 #==============================================================================#
 
+alias al='ls -lAh'
 alias cd=' cd'
 alias cdusb='cd /mnt/usb'
 alias cmx='chmod -x'
@@ -152,11 +153,11 @@ alias cx='chmod +x'
 alias fancydate='watch -n1 "date '+%D%n%T'|figlet -k"'
 alias g='git'
 alias gi='git'
+alias gren='grep -rn'
 alias grep='grep --color=auto'
 alias grepi='grep -i'
 alias grin='grep -rin'
 alias iftop='iftop -N -p -P'
-alias al='ls -lAh'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ln='ln -v'
@@ -200,15 +201,15 @@ ext () {
         case $1 in
             *.7z)                   7z x $1 ;;
             *.Z)                    uncompress $1 ;;
-            *.bz2)                  bunzip2 $1 ;;
-            *.deb)                  ar vx $1 ;;
-            *.gz)                   gunzip $1 ;;
             *.rar)                  unrar x $1 ;;
-            *.tar)                  pv $1 | tar x  || tar xvf $1 ;;
             *.tar.bz2 | *.tbz2)     pv $1 | tar xj || tar xvjf $1 ;;
             *.tar.gz | *.tgz)       pv $1 | tar xz || tar xzvf $1 ;;
             *.tar.xz | *.txz)       pv $1 | tar xJ || tar xJvf $1 ;;
+            *.bz2)                  bunzip2 $1 ;;
+            *.deb)                  ar vx $1 ;;
+            *.gz)                   gunzip $1 ;;
             *.xz)                   unxz $1 ;;
+            *.tar)                  pv $1 | tar x  || tar xvf $1 ;;
             *.zip)                  unzip $1 ;;
             *) echo "'$1' cannot be extracted via extract()" ;;
         esac
