@@ -259,9 +259,9 @@ quiet() {
 dtb() { echo "obase=2; ${1}" | bc };
 dth() { echo "obase=16; ${1}" | bc };
 btd() { echo "ibase=2; ${1}" | bc };
-htd() { echo "ibase=16; ${1}" | bc };
+htd() { echo "ibase=16; $(tr '[a-z]' '[A-Z]' <<< ${1})" | bc };
 bth() { echo "obase=16;ibase=2; ${1}" | bc };
-htb() { echo "ibase=16;obase=2; ${1}" | bc };
+htb() { echo "ibase=16;obase=2; $(tr '[a-z]' '[A-Z]' <<< ${1})" | bc };
 
 #==============================================================================#
 #                                    colors                                    #
