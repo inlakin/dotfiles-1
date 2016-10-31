@@ -4,7 +4,7 @@
 
 # Quit bspwm
 super + alt + Escape
-    pkill -x panel; bspc quit
+    pkill -x yabar; bspc quit
 
 # Close and kill
 super + {_,shift + }w
