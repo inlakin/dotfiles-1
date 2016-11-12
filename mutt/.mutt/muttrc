@@ -1,0 +1,84 @@
+#==============================================================================#
+#                                common options                                #
+#==============================================================================#
+
+set autoedit
+set copy             = yes
+set delete           = yes
+set edit_headers     = yes
+set editor           = `echo \$EDITOR`
+set header_cache     = "~/.mutt/cache"
+set include
+set status_on_top
+set nouse_domain
+set implicit_autoview = yes
+set pgp_verify_sig = yes
+set read_inc = 25
+set write_inc = 25
+set noprompt_after
+set indent_string    = "> "
+set mailcap_path     = "~/.mutt/mailcap"
+set message_cachedir = "~/.mutt/cache"
+set mime_forward
+set nomark_old
+set nosave_empty
+# set pager            = less
+set pager_stop
+set reply_to
+set send_charset     = "utf-8"
+set sidebar_visible  = yes
+set sort             = threads
+set tmpdir           = "~/.mutt/tmp"
+
+auto_view text/html
+alternative_order text/plain text/html
+
+unmy_hdr *
+unset use_from
+unset use_domain
+unset user_agent
+
+#==============================================================================#
+#                                 key bindings                                 #
+#==============================================================================#
+
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager B sidebar-toggle-visible
+
+#==============================================================================#
+#                                    colors                                    #
+#==============================================================================#
+
+color attachment red default
+color error brightred default
+color hdrdefault blue default
+color index blue default ~F
+color index red default "~N|~O"
+color indicator default green
+color markers red default
+color message brightred default
+color normal white default
+color prompt brightmagenta default
+color quoted blue default
+color search white default
+color signature blue default
+color status green default
+color tilde brightmagenta default
+color tree white default
+
+#==============================================================================#
+#                                email accounts                                #
+#==============================================================================#
+
+source "~/.mutt/accounts/[...]"
