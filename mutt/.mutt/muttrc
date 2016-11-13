@@ -2,41 +2,58 @@
 #                                common options                                #
 #==============================================================================#
 
+set abort_nosubject   = yes
+set abort_unmodified  = yes
+set alias_file        = "~/.mutt/alias"
+set attribution       = "On %d, %n wrote:"
 set autoedit
-set copy             = yes
-set delete           = yes
-set edit_headers     = yes
-set editor           = `echo \$EDITOR`
-set header_cache     = "~/.mutt/cache"
+set certificate_file  = "~/.mutt/certificates"
+set copy              = yes
+set delete            = yes
+set edit_headers      = yes
+set editor            = `echo \$EDITOR`
+set fast_reply
+set askcc
+set fcc_attach
+set folder            = "~/mail"
+set forward_decode
+set forward_format    = "Fwd: %s"
+set forward_quote
+set header_cache      = "~/.mutt/cache"
+set hidden_host       = yes
 set include
-set status_on_top
-set nouse_domain
-set implicit_autoview = yes
-set pgp_verify_sig = yes
-set read_inc = 25
-set write_inc = 25
-set noprompt_after
-set indent_string    = "> "
-set mailcap_path     = "~/.mutt/mailcap"
-set message_cachedir = "~/.mutt/cache"
-set mime_forward
+set indent_string     = "> "
+set mailcap_path      = "~/.mutt/mailcap"
+set mbox_type         = Maildir
+set message_cachedir  = "~/.mutt/cache"
 set nomark_old
+set noprompt_after
 set nosave_empty
-# set pager            = less
+set nouse_domain
+# set pager             = less
 set pager_stop
+set pgp_verify_sig    = yes
+set quit
+set read_inc          = 25
 set reply_to
-set send_charset     = "utf-8"
-set sidebar_visible  = yes
-set sort             = threads
-set tmpdir           = "~/.mutt/tmp"
+set reverse_name
+set send_charset      = "utf-8"
+set sidebar_visible   = yes
+set sidebar_width     = 30
+set sig_dashes
+set status_on_top
+set tmpdir            = "~/.mutt/tmp"
+set wait_key          = no
+set write_inc         = 25
 
 auto_view text/html
 alternative_order text/plain text/html
 
-unmy_hdr *
-unset use_from
-unset use_domain
-unset user_agent
+hdr_order from: to: cc: date: subject:
+
+unset confirmappend
+unset mark_old
+unset move
 
 #==============================================================================#
 #                                 key bindings                                 #
@@ -50,19 +67,41 @@ bind pager g top
 bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
+bind index <space> collapse-thread
+bind index <tab> sync-mailbox
+bind index R group-reply
 
-bind index,pager \CP sidebar-prev
-bind index,pager \CN sidebar-next
-bind index,pager \CO sidebar-open
+bind index,pager K sidebar-prev
+bind index,pager J sidebar-next
+bind index,pager L sidebar-open
 bind index,pager B sidebar-toggle-visible
+
+#==============================================================================#
+#                                     view                                     #
+#==============================================================================#
+
+set date_format = "%m/%d"
+set index_format = "[%Z]  %D  %-25.25F  %s"
+set menu_scroll
+set sort              = threads
+set sort_aux          = reverse-last-date-received
+set status_chars  = " *%A"
+set status_format = "───[ folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set tilde
+set uncollapse_jump
+unset markers
 
 #==============================================================================#
 #                                    colors                                    #
 #==============================================================================#
 
 color attachment red default
+color body cyan default "(http|https)://[^ \">\t\r\n]*"
+color body cyan default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
 color error brightred default
+color body magenta default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 color hdrdefault blue default
+color header yellow default "^(From|Subject):"
 color index blue default ~F
 color index red default "~N|~O"
 color indicator default green
@@ -78,7 +117,12 @@ color tilde brightmagenta default
 color tree white default
 
 #==============================================================================#
-#                                email accounts                                #
+#                                   mailboxes                                  #
 #==============================================================================#
 
-source "~/.mutt/accounts/[...]"
+unmy_hdr *
+unset use_domain
+unset use_from
+unset user_agent
+
+source "~/.mutt/mailboxes"
