@@ -1,8 +1,0 @@
-set folder = imaps://[...]
-set imap_user = [...]@[...]
-set imap_pass = `pass [...] | head -n1`
-set spoolfile = +INBOX
-mailboxes = +INBOX
-unset imap_passive
-set imap_keepalive = 300
-set mail_check = 120
