@@ -133,9 +133,4 @@ set pgp_timeout=3600
 #                                   mailboxes                                  #
 #==============================================================================#
 
-unmy_hdr *
-unset use_domain
-unset use_from
-unset user_agent
-
 source "~/.mutt/mailboxes"
