@@ -31,7 +31,6 @@ if hostname | grep -q laptop ; then
     # unclutter -grab -noevents -root &
     yabar -c ~/.config/yabar/yabar_laptop.conf &
 else
-    mpd ~/.config/mpd/mpd.conf
     # needed because frequency is set to 60 by default
     xrandr --output DVI-D-1 --mode 1920x1080 --rate 144.00 --primary
     xrandr --output DP-1 --rotate left
