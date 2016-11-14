@@ -2,46 +2,46 @@
 #                                common options                                #
 #==============================================================================#
 
-set abort_nosubject   = yes
-set abort_unmodified  = yes
-set alias_file        = "~/.mutt/alias"
-set attribution       = "On %d, %n wrote:"
-set autoedit
-set certificate_file  = "~/.mutt/certificates"
-set copy              = yes
-set delete            = yes
-set edit_headers      = yes
-set editor            = `echo \$EDITOR`
-set fast_reply
+set abort_nosubject  = yes
+set abort_unmodified = yes
+set alias_file       = "~/.mutt/alias"
 set askcc
+set attribution      = "On %d, %n wrote:"
+set autoedit
+set certificate_file = "~/.mutt/certificates"
+set copy             = yes
+set delete           = yes
+set edit_headers     = yes
+set editor           = `echo \$EDITOR`
+set fast_reply
 set fcc_attach
-set folder            = "~/mail"
+set folder           = "~/mail"
 set forward_decode
-set forward_format    = "Fwd: %s"
+set forward_format   = "Fwd: %s"
 set forward_quote
-set header_cache      = "~/.mutt/cache"
-set hidden_host       = yes
+set header_cache     = "~/.mutt/cache"
+set hidden_host      = yes
 set include
-set indent_string     = "> "
-set mailcap_path      = "~/.mutt/mailcap"
-set mbox_type         = Maildir
-set message_cachedir  = "~/.mutt/cache"
+set indent_string    = "> "
+set mail_check_stats = yes
+set mailcap_path     = "~/.mutt/mailcap"
+set mbox_type        = Maildir
+set message_cachedir = "~/.mutt/cache"
 set nomark_old
 set noprompt_after
 set nosave_empty
 set nouse_domain
-# set pager             = less
 set pager_stop
+set pgp_verify_sig   = yes
 set quit
-set read_inc          = 25
+set read_inc         = 25
 set reply_to
 set reverse_name
-set send_charset      = "utf-8"
-set pgp_verify_sig    = yes
+set send_charset     = "utf-8"
 set sig_dashes
-set tmpdir            = "~/.mutt/tmp"
-set wait_key          = no
-set write_inc         = 25
+set tmpdir           = "~/.mutt/tmp"
+set wait_key         = no
+set write_inc        = 25
 
 auto_view text/html
 alternative_order text/plain text/html
@@ -52,7 +52,6 @@ unset mark_old
 unset move
 
 #==============================================================================#
-
 #                                 key bindings                                 #
 #==============================================================================#
 
@@ -75,18 +74,31 @@ bind pager j next-line
 bind pager k previous-line
 
 #==============================================================================#
+#                                    macros                                    #
+#==============================================================================#
+
+macro index ,i "<change-folder>!<enter>"
+macro pager,index ,s "<pipe-message>cat > ~/"
+macro attach S "<save-entry><kill-line>~/downloads/"
+macro index,pager ",l" "<pipe-message>less<enter>"
+
+#==============================================================================#
 #                                     view                                     #
 #==============================================================================#
-set sort_aux          = reverse-last-date-received
-set sidebar_visible   = yes
-set sidebar_width     = 30
-set status_on_top
-set date_format = "%m/%d"
-set index_format="[%Z] %?X?%X& ? %{%d.%m.%y}  %-25.25F  %?M?(#%03M)&(%4c)? %?y?(%.20Y)  ?%s"
+
+set date_format         = "%m/%d"
+set index_format        = "[%Z] %?X?%X& ? %{%d.%m.%y}  %-25.25F  %?M?(#%03M)&(%4c)? %?y?(%.20Y)  ?%s"
 set menu_scroll
-set sort              = threads
-set status_chars  = " *%A"
-set status_format = "───[ folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set sidebar_delim_chars = "/"
+set sidebar_format      = "%B%*  %?n?(%N)&? %S"
+set sidebar_short_path  = yes
+set sidebar_visible     = yes
+set sidebar_width       = 30
+set sort                = threads
+set sort_aux            = reverse-last-date-received
+set status_chars        = " *%A"
+set status_format       = "───[ folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set status_on_top
 set tilde
 set uncollapse_jump
 unset markers
@@ -103,6 +115,9 @@ color error brightred default
 color hdrdefault blue default
 color header yellow default "^(From|Subject):"
 color index blue default ~F
+color index brightblue default "~Q"
+color index brightgreen default "~P"
+color index default red "~D"
 color index red default "~N|~O"
 color indicator default green
 color markers red default
@@ -115,7 +130,7 @@ color sidebar_new red default
 color signature blue default
 color status green default
 color tilde brightmagenta default
-color tree white default
+color tree yellow default
 
 #==============================================================================#
 #                                   mailboxes                                  #
