@@ -1,0 +1,8 @@
+[Unit]
+Description=offlineimap sync daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/offlineimap -u quiet
+KillSignal=SIGUSR2
+Restart=always
