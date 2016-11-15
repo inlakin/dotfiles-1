@@ -65,6 +65,7 @@ bind index,pager K sidebar-prev
 bind index <tab> sync-mailbox
 bind index R group-reply
 bind index p recall-message
+bind compose P pgp-menu
 bind index,pager B sidebar-toggle-visible
 bind index,pager J sidebar-next
 bind index,pager L sidebar-open
