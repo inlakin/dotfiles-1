@@ -33,6 +33,7 @@ set nosave_empty
 set nouse_domain
 set pager_stop
 set pgp_verify_sig   = yes
+set print            = no
 set quit
 set read_inc         = 25
 set reply_to
@@ -87,8 +88,8 @@ macro index,pager ",l" "<pipe-message>less<enter>"
 #                                     view                                     #
 #==============================================================================#
 
-set date_format         = "%m/%d"
-set index_format        = "[%Z] %?X?%X& ? %{%d.%m.%y}  %-25.25F  %?M?(#%03M)&(%4c)? %?y?(%.20Y)  ?%s"
+set date_format         = "%d.%m.%y"
+set index_format        = "[%Z] %?X?%X& ? %{%d.%m.%y}  %-25.25f  %?M?(#%03M)&? %?y?(%.20Y) ?%s %*   %c"
 set menu_scroll
 set sidebar_delim_chars = "/"
 set sidebar_format      = "%B%*  %?n?(%N)&? %S"
@@ -98,7 +99,7 @@ set sidebar_width       = 30
 set sort                = threads
 set sort_aux            = reverse-last-date-received
 set status_chars        = " *%A"
-set status_format       = "───[ folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set status_format       = "──[ Mutt%r%?b? (%b) &?]──[ %f %m %?n? (%n N)?%?d? (%d D)?%?p?( %p p)?]──%>─[ %l ]──[ %h ]──"
 set status_on_top
 set tilde
 set uncollapse_jump
@@ -116,8 +117,9 @@ color error brightred default
 color hdrdefault blue default
 color header yellow default "^(From|Subject):"
 color index blue default ~F
-color index brightblue default "~Q"
-color index brightgreen default "~P"
+color index cyan default "~Q"
+color index brightyellow default "~X 1-"
+color index brightgreen default "~G|~g|~V|~k"
 color index default red "~D"
 color index red default "~N|~O"
 color indicator default green
@@ -127,11 +129,11 @@ color normal white default
 color prompt brightmagenta default
 color quoted blue default
 color search white default
-color sidebar_new red default
+color sidebar_new green default
 color signature blue default
 color status green default
 color tilde brightmagenta default
-color tree yellow default
+color tree default default
 
 #==============================================================================#
 #                                   mailboxes                                  #
