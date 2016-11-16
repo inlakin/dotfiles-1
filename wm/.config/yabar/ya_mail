@@ -5,5 +5,5 @@ MAILDIR="$HOME/mail"
 while true; do
     printf " \Uf0e0 $(find "${MAILDIR}" -path "*INBOX/new/*" -ls | wc -l) "
     find "${MAILDIR}" -path "*INBOX/new" \
-        | xargs inotifywait -e create -e moved_to -e delete -qq
+        | xargs inotifywait -e create -e move -e delete -qq
 done
