@@ -173,6 +173,7 @@ alias psns='ps xawf -eo pid,user,pidns,userns,utsns,netns,mntns,args'
 alias rm='rm -Iv --one-file-system'
 alias rmdir='rmdir -v'
 alias savepkglist='pacman -Qqe | grep -vx "$(pacman -Qqm)" > ~.pkg.list'
+alias startx='startx; stty sane'
 alias sz="source ~/.zshrc"
 alias v='vim -p'
 alias vi='vim -p'
