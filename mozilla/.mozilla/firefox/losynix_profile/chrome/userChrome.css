@@ -86,15 +86,6 @@
    overflow-y: scroll;
 }
 
-/* Hide backbutton  */
-:root #back-button, #forward-button > .toolbarbutton-icon {
-   display: none !important;
-}
-window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
-   clip-path: none !important;
-   margin-left: 30px !important;
-}
-
 /* Remove the drop down arrow in the Address bar */
 .autocomplete-history-dropmarker {
    display: none !important;
@@ -103,6 +94,34 @@ window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
 /* Remove toolbar icon if folder */
 .bookmark-item[container="true"] > .toolbarbutton-icon {
     display: none;
+}
+
+/* remove unnecessary stuff */
+#context-back image,
+#context-forward image,
+#context-reload image,
+#context-stop image,
+#context-bookmarkpage image,
+#context-navigation,
+#context-sep-navigation
+#urlbar-go-button,
+#urlbar-reload-button,
+#back-button,
+.search-go-button,
+#forward-button {
+    display:none !important;
+}
+/* .searchbar-engine-button { display: none; } */
+
+/* remove icon type */
+.ac-type-icon {
+    display: none!important;
+}
+
+/* reset max size */
+#PopupAutoCompleteRichResult .autocomplete-richlistbox {
+    max-height: 800px !important;
+    height: auto !important
 }
 
 /* -- COLORS -- */
@@ -115,6 +134,7 @@ window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
 }
 #urlbar > * {
    background-color: #0C1115 !important;
+   color: #c9c1ba !important;
    border-width: 0px 0px 0 0px !important;
    border-color: #0C1115 !important;
 }
@@ -134,4 +154,22 @@ window:not([chromehidden~="toolbar"]) #urlbar-wrapper {
    border-color: #363636 !important;
    border-width: 0px 0px 0 0.5px !important;
    color: #c9c1ba !important;
+}
+
+.autocomplete-richlistitem {
+    background: #0C1115 !important;
+    color: #c9c1ba !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    max-height: 5px !important;
+}
+
+#PopupAutoCompleteRichResult .ac-url-text {
+    color: #15814c!important;
+    max-height: 5px !important;
+}
+
+.autocomplete-richlistitem:hover, .autocomplete-richlistitem[selected="true"] {
+    color: #0C1115 !important;
+    background: #c9c1ba !important;
 }
