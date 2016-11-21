@@ -41,7 +41,7 @@ fi
 if [ -f ~/pictures/wallpaper ]; then
     hsetroot -tile ~/pictures/wallpaper
 else
-    hsetroot -solid "#373b41"
+    hsetroot -solid "#0c1115"
 fi
 
 wmname LG3D
