@@ -148,6 +148,7 @@ alias al='ls -lAh'
 alias cd=' cd'
 alias cdusb='cd /mnt/usb'
 alias cmx='chmod -x'
+alias conj='french-conjugator --pronouns'
 alias cp='cp -iv'
 alias cx='chmod +x'
 alias fancydate='watch -n1 "date '+%D%n%T'|figlet -k"'
@@ -264,6 +265,9 @@ btd() { echo "ibase=2; ${1}" | bc };
 htd() { echo "ibase=16; $(tr '[a-z]' '[A-Z]' <<< ${1})" | bc };
 bth() { echo "obase=16;ibase=2; ${1}" | bc };
 htb() { echo "ibase=16;obase=2; $(tr '[a-z]' '[A-Z]' <<< ${1})" | bc };
+# quick fr/en translator
+fte() { trans -b fr:en $@ };
+etf() { trans -b en:fr $@ };
 
 #==============================================================================#
 #                                    colors                                    #
