@@ -1,9 +1,15 @@
 #!/bin/bash
 
 MAILDIR="$HOME/mail"
-
+COUNT=0
+OLDCOUNT=0
 while true; do
-    printf " \Uf0e0 $(find "${MAILDIR}" -path "*INBOX/new/*" -ls | wc -l) "
+    COUNT="$(find "${MAILDIR}" -path "*INBOX/new/*" -ls | wc -l)"
+    printf " \Uf0e0 ${COUNT} "
+    if [ "$COUNT" -gt "$OLDCOUNT" ]; then
+        mpv --no-video --really-quiet ~/.mutt/newmess.mp3
+    fi
+    OLDCOUNT=$COUNT
     find "${MAILDIR}" -path "*INBOX/new" \
         | xargs inotifywait -e create -e move -e delete -qq
 done
