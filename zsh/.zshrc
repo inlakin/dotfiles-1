@@ -227,8 +227,9 @@ mkcd() {
 }
 
 f() {
-    echo "find . -iname \"*$1*\""
-    find . -iname "*$1*"
+    KW="$1"
+    shift
+    find . -iname "*$KW*" $@
 }
 
 cp_p() {
