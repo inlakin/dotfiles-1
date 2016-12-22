@@ -232,6 +232,13 @@ f() {
     find . -iname "*$KW*" $@
 }
 
+frm() {
+    KW="$1"
+    shift
+    find . -iname "*$KW*" -exec rm {} \;
+}
+
+
 cp_p() {
     if [ `echo "$2" | grep ".*\/$"` ]; then
         pv "$1" > "$2""$1";
@@ -257,6 +264,11 @@ lock() {
 
 quiet() {
     nohup $@ &>/dev/null &
+}
+
+capfirstletters() {
+    # | sh to actually rename files
+    ls | perl -ne 'chomp; $f=$_; tr/A-Z/a-z/; s/(?<![.'"'"'])\b\w/\u$&/g; print qq{mv "$f" "$_"\n}'
 }
 
 # quick bin/hex/dec converter
