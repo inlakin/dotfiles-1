@@ -145,6 +145,7 @@ bindkey '^R' history-incremental-search-backward
 #==============================================================================#
 
 alias al='ls -lAh'
+alias ampv='mpv --no-audio-display'
 alias cd=' cd'
 alias cdusb='cd /mnt/usb'
 alias cmx='chmod -x'
