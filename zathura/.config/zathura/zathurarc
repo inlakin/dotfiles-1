@@ -2,9 +2,7 @@
 #                          Zathura Configuration file                          #
 #==============================================================================#
 
-set font "tewi normal 9"
-# set font "ohsnap normal 9"
-# set font "terminus normal 9"
+set font "lucy tewi normal 9"
 
 map u zoom out
 map i zoom in

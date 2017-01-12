@@ -18,8 +18,8 @@ search_wrap         = true
 cursor_blink        = system
 cursor_shape        = block
 browser             = firefox
-font = tewi 9
-# tewi 9 terminus 9 ohsnap 9
+font = lucy tewi 9
+# lucy tewi 9; xos4 terminus 9 misc ohsnap 9
 #transparency        = 0.0
 
 [colors]

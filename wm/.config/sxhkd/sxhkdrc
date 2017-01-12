@@ -104,7 +104,7 @@ super + space
         -lines '5' \
         -width '30' \
         -hide-scrollbar \
-        -font 'Tewi 8'
+        -font 'lucy tewi 8'
 
 # Music Key
 XF86AudioPlay
