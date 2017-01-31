@@ -41,6 +41,7 @@ bspc rule -a Gimp state=floating
 bspc rule -a Virt-viewer state=floating
 bspc rule -a Sxiv state=floating
 bspc rule -a Qemu-system-x86_64 state=floating
+bspc rule -a Spek state=floating
 
 # Bar
 pkill yabar
