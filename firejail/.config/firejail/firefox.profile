@@ -7,3 +7,4 @@ whitelist ~/dotfiles/vimfx
 whitelist ~/.config/vimfx
 whitelist ~/dotfiles/zathura
 whitelist ~/.config/zathura
+whitelist ~/sources/ff-privsec
