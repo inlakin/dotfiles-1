@@ -75,7 +75,7 @@ autocmd FileType c,cpp,sh,zsh,make,python,vim setlocal tw=80
 autocmd FileType tex setlocal spell tw=120
 autocmd FileType html setlocal ts=2 sts=2 sw=2
 autocmd FileType gitcommit setlocal spell tw=72
-autocmd FileType markdown setlocal spell tw=80
+autocmd FileType markdown setlocal spell tw=120
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 
 let NERDTreeShowHidden=1
@@ -113,20 +113,19 @@ let python_highlight_all=1
 autocmd FileType python set autoindent
 
 " ---------------------------------------------------------------------------- "
-"                               Plugin Syntastic                               "
+"                              ale syntax checker                              "
 " ---------------------------------------------------------------------------- "
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-" disable by default
-autocmd VimEnter * SyntasticToggleMode
-" let g:syntastic_auto_jump = 3
+" let g:ale_sign_column_always = 0
+let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_lint_on_enter = 0
+let g:ale_sign_error = '⨉ '
+let g:ale_sign_warning = '⚠ '
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_c_gcc_options ='-std=c11 -Wall -Wextra -Wshadow -Wpedantic -Wformat=2'
 
 " ---------------------------------------------------------------------------- "
 "                                Plugin Airline                                "
@@ -141,10 +140,12 @@ let g:airline_detect_modified = 1
 let g:airline_detest_spell = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='term'
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#error_symbol = '⨉ '
+let g:airline#extensions#ale#warning_symbol = '⚠ '
 
 " ---------------------------------------------------------------------------- "
 "                                Plugin Startify                               "
@@ -287,3 +288,7 @@ vnoremap <Down> :m '>+1<CR>gv=gv
 
 " number toggle
 nnoremap<leader>n :call NumberToggle()<CR>
+
+" navigate between errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
