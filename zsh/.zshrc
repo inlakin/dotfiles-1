@@ -272,6 +272,10 @@ capfirstletters() {
     ls | perl -ne 'chomp; $f=$_; tr/A-Z/a-z/; s/(?<![.'"'"'])\b\w/\u$&/g; print qq{mv "$f" "$_"\n}'
 }
 
+ympvs() {
+    mpv --no-video --ytdl-format=bestaudio ytdl://ytsearch10:"$@"
+}
+
 # quick bin/hex/dec converter
 dtb() { echo "obase=2; ${1}" | bc };
 dth() { echo "obase=16; ${1}" | bc };
