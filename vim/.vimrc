@@ -297,4 +297,5 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " copy/paste to/from system clipboard
 vnoremap cp "+y
-vnoremap cv "+p
+noremap cp "+yy
+noremap cv "+p

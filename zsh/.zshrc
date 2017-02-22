@@ -182,6 +182,7 @@ alias v='vim -p'
 alias vi='vim -p'
 alias vim='vim -p'
 alias weather="curl -s http://wttr.in | head -n -2"
+alias wine="firejail wine"
 alias ympv="mpv --ytdl-format=best --ytdl "
 
 #==============================================================================#
