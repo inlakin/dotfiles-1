@@ -233,6 +233,8 @@ let g:mapleader = ","
 map <silent> <leader><cr> :noh<cr>
 imap <C-L> <Esc>
 
+noremap <leader>= :Autoformat<CR>
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
@@ -292,3 +294,7 @@ nnoremap<leader>n :call NumberToggle()<CR>
 " navigate between errors
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" copy/paste to/from system clipboard
+vnoremap cp "+y
+vnoremap cv "+p
