@@ -6,7 +6,7 @@ export EDITOR=vim
 export BROWSER=firefox
 export PAGER=less
 export KEYTIMEOUT=1
-export TERM=xterm
+export TERM=xterm-256color
 export GPG_TTY=$(tty)
 
 umask 022
